@@ -4,19 +4,16 @@
 #include <stdlib.h>
 
 
-
-int main() 
-{
+int main() {
     int a, b;
     scanf("%d\n%d", &a, &b);
-  	// Complete the code.
-      int i;
-      for(i=a;i<=b;i++)
-      {
+    // Complete the code.
+    int i;
+    for (i = a; i <= b; i++) {
 
         if (i == 0)
-          puts("zero");
-        if(i==1)
+            puts("zero");
+        if (i == 1)
             puts("one");
         if (i == 2)
             puts("two");
@@ -32,14 +29,14 @@ int main()
             puts("seven");
         if (i == 8)
             puts("eight");
-        if(i==9)
+        if (i == 9)
             puts("nine");
-        if(i>9&&i%2==0)
+        if (i > 9 && i % 2 == 0)
             puts("even");
-        if(i>9&&i%2==1)
+        if (i > 9 && i % 2 == 1)
             puts("odd");
-      }
-      
+    }
+
 
     return 0;
 }
