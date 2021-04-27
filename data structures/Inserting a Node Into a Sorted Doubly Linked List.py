@@ -1,5 +1,3 @@
-
-
 # Complete the sortedInsert function below.
 
 #
@@ -12,24 +10,21 @@
 #
 #
 def sortedInsert(head, data):
-    node=DoublyLinkedListNode(data)
-    if node.data<=head.data:
-        node.next=head
-        head.prev=node
-        head=node
+    node = DoublyLinkedListNode(data)
+    if node.data <= head.data:
+        node.next = head
+        head.prev = node
+        head = node
         return head
-    temp=head
-    while temp!=None:
-        if temp.next==None or  temp.next.data>=node.data:                
-            node.prev=temp
-            if temp.next !=None:
-                temp.next.prev=node
-                node.next=temp.next
-            temp.next=node
+    temp = head
+    while temp != None:
+        if temp.next == None or temp.next.data >= node.data:
+            node.prev = temp
+            if temp.next != None:
+                temp.next.prev = node
+                node.next = temp.next
+            temp.next = node
             return head
-        temp=temp.next
+        temp = temp.next
 
-
-
-    #while temp
-
+    # while temp

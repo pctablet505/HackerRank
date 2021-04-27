@@ -9,13 +9,13 @@ import sys
 
 # Complete the stones function below.
 def stones(n, a, b):
-    
-    res=set()
+    res = set()
     for i in range((n)):
-        na=i
-        nb=n-1-i
-        res.add(na*a+nb*b)
+        na = i
+        nb = n - 1 - i
+        res.add(na * a + nb * b)
     return sorted(list(res))
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

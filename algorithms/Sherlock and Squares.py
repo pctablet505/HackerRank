@@ -1,21 +1,22 @@
 #!/bin/python3
 
-from math import sqrt, ceil,floor
+from math import sqrt, ceil, floor
 import os
 import random
 import re
 import sys
 
+
 # Complete the squares function below.
 def squares(a, b):
-    x=ceil(sqrt(a))
-    y=floor(sqrt(b))
-    count=0
-    count+=y-x
-    if x>y:
+    x = ceil(sqrt(a))
+    y = floor(sqrt(b))
+    count = 0
+    count += y - x
+    if x > y:
         return 0
-    if y**2<=b:
-        count+=1
+    if y ** 2 <= b:
+        count += 1
     return count
 
 

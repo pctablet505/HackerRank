@@ -7,51 +7,57 @@ import re
 import sys
 from collections import defaultdict
 
-parent=dict()
-machines=defaultdict(bool)
-size=dict()
+parent = dict()
+machines = defaultdict(bool)
+size = dict()
+
+
 def find(x):
-    if parent[x]==x:
-        return (x,machines[x])
-    parent[x],machines[x]=find(parent[x])
-    return (parent[x],machines[x])
-def merge(a,b,f=False):
-    a,fa=find(a)
-    b,fb=find(b)
-    if a==b:
+    if parent[x] == x:
+        return (x, machines[x])
+    parent[x], machines[x] = find(parent[x])
+    return (parent[x], machines[x])
+
+
+def merge(a, b, f=False):
+    a, fa = find(a)
+    b, fb = find(b)
+    if a == b:
         return
-    if size[b]<size[a]:
-        a,b=b,a
-    parent[b]=a
+    if size[b] < size[a]:
+        a, b = b, a
+    parent[b] = a
     if f:
-        machines[a]=True
-        machines[b]=True
-    size[a]+=size[b]
+        machines[a] = True
+        machines[b] = True
+    size[a] += size[b]
+
 
 def minTime(roads, machines_node):
-    machines_node=set(machines_node)
-    roads.sort(key=lambda x:x[2],reverse=True)
-    result=0
-    for u,v,w in roads:
+    machines_node = set(machines_node)
+    roads.sort(key=lambda x: x[2], reverse=True)
+    result = 0
+    for u, v, w in roads:
         if u not in parent:
-            parent[u]=u
-            size[u]=1
+            parent[u] = u
+            size[u] = 1
             if u in machines_node:
-                machines[u]=True
+                machines[u] = True
         if v not in parent:
-            parent[v]=v
-            size[v]=1
+            parent[v] = v
+            size[v] = 1
             if v in machines_node:
-                machines[v]=True
-        pu,mu=find(u)
-        pv,mv=find(v)
-      
+                machines[v] = True
+        pu, mu = find(u)
+        pv, mv = find(v)
+
         if mu and mv:
-            result+=w
+            result += w
         else:
-            merge(pu,pv,mu|mv)
-    
+            merge(pu, pv, mu | mv)
+
     return result
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

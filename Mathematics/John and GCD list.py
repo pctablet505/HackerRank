@@ -4,15 +4,18 @@ import os
 import sys
 from math import gcd
 
-def lcm(a,b):
+
+def lcm(a, b):
     '''lcm(a,b)=[a*b]/[gcd(a,b)]'''
-    return a//(gcd(a,b))*b
+    return a // (gcd(a, b)) * b
+
+
 def solve(a):
-    res=[0]*(len(a)+1)
-    res[0]=a[0]
-    res[-1]=a[-1]
-    for i in range(len(a)-1):
-        res[i+1]=lcm(a[i],a[i+1])
+    res = [0] * (len(a) + 1)
+    res[0] = a[0]
+    res[-1] = a[-1]
+    for i in range(len(a) - 1):
+        res[i + 1] = lcm(a[i], a[i + 1])
     return res
 
 

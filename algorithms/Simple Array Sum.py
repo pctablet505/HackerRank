@@ -3,17 +3,19 @@
 import os
 import sys
 
+
 #
 # Complete the simpleArraySum function below.
 #
 def simpleArraySum(ar):
     #
     # 
-    s=0
+    s = 0
     for x in ar:
-        s+=x
+        s += x
     return s
     #
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

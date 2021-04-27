@@ -1,23 +1,21 @@
 def merge_the_tools(string, k):
     # your code goes here
-    n=len(string)
-    st=[]
-    x=0
-    while x<n:
-        s=''
+    n = len(string)
+    st = []
+    x = 0
+    while x < n:
+        s = ''
         for j in range(k):
-            s+=string[x+j]
+            s += string[x + j]
         st.append(s)
-        x+=k
-    new=[]
+        x += k
+    new = []
     for strings in st:
-        s=''
+        s = ''
         for x in strings:
             if x not in s:
-                s+=x
+                s += x
         new.append(s)
 
     for values in new:
         print(values)
-
-

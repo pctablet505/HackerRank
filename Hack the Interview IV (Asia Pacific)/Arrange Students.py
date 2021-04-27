@@ -6,6 +6,7 @@ import random
 import re
 import sys
 
+
 #
 # Complete the 'arrangeStudents' function below.
 #
@@ -18,22 +19,23 @@ import sys
 def arrangeStudents(a, b):
     a.sort()
     b.sort()
-    ia=iter(a)
-    ib=iter(b)
-    c1=[]
-    c2=[]
-    d=a+b
+    ia = iter(a)
+    ib = iter(b)
+    c1 = []
+    c2 = []
+    d = a + b
     d.sort()
-    
+
     for x in range(len(a)):
-        c1.extend([next(ia),next(ib)])
-    ia=iter(a)
-    ib=iter(b)
+        c1.extend([next(ia), next(ib)])
+    ia = iter(a)
+    ib = iter(b)
     for x in range(len(a)):
-        c2.extend([next(ib),next(ia)])
-    if c1==d or c2==d:
+        c2.extend([next(ib), next(ia)])
+    if c1 == d or c2 == d:
         return 'YES'
     return 'NO'
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

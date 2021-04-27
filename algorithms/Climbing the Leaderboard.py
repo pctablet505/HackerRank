@@ -8,23 +8,20 @@ import sys
 import bisect
 
 
-
 def climbingLeaderboard(ranked, player):
-    
-    ranks=[ranked[0]]
+    ranks = [ranked[0]]
     for x in ranked[1:]:
-        if x!=ranks[-1]:
+        if x != ranks[-1]:
             ranks.append(x)
     ranks.reverse()
-    n=len(ranks)
-    
-    s=0
-    result=[]
-    for score in player:
-        s=score
-        result.append(n-bisect.bisect(ranks,s)+1)
-    return result
+    n = len(ranks)
 
+    s = 0
+    result = []
+    for score in player:
+        s = score
+        result.append(n - bisect.bisect(ranks, s) + 1)
+    return result
 
 
 if __name__ == '__main__':

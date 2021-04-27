@@ -6,9 +6,11 @@ import random
 import re
 import sys
 
+
 # Complete the theGreatXor function below.
 def theGreatXor(x):
-    return (1<<len(bin(x)[2:]))-(x+1)
+    return (1 << len(bin(x)[2:])) - (x + 1)
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

@@ -7,12 +7,14 @@ import re
 import sys
 from collections import Counter
 
+
 # Complete the equalizeArray function below.
 def equalizeArray(arr):
-    c=Counter(arr)
-    M=c.most_common(1)
-    
-    return len(arr)-M[0][1]
+    c = Counter(arr)
+    M = c.most_common(1)
+
+    return len(arr) - M[0][1]
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

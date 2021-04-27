@@ -6,13 +6,14 @@ import random
 import re
 import sys
 
+
 # Complete the catAndMouse function below.
 def catAndMouse(x, y, z):
-    da=abs(x-z)
-    db=abs(y-z)
-    if da<db:
-        return'Cat A'
-    elif da>db:
+    da = abs(x - z)
+    db = abs(y - z)
+    if da < db:
+        return 'Cat A'
+    elif da > db:
         return 'Cat B'
     else:
         return 'Mouse C'

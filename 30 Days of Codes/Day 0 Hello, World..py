@@ -2,7 +2,6 @@
 input_string = input()
 
 # Print a string literal saying "Hello, World." to stdout.
-print('Hello, World.',input_string,sep='\n')
-
+print('Hello, World.', input_string, sep='\n')
 
 # TODO: Write a line of code here that prints the contents of input_string to stdout.

@@ -6,25 +6,27 @@ import random
 import re
 import sys
 
+
 # Complete the appendAndDelete function below.
 def appendAndDelete(s, t, k):
-    ls=len(s)
-    lt=len(t)
-    if k>=len(s)+len(t):
+    ls = len(s)
+    lt = len(t)
+    if k >= len(s) + len(t):
         return 'Yes'
-    i=0
-    m=min(ls,lt)
-    while i<m and s[i]==t[i]:
-        i+=1
-    d=ls+lt-2*i
-    if k<d:
+    i = 0
+    m = min(ls, lt)
+    while i < m and s[i] == t[i]:
+        i += 1
+    d = ls + lt - 2 * i
+    if k < d:
         return 'No'
-    if k==d:
+    if k == d:
         return 'Yes'
-    if (k-d)%2:
+    if (k - d) % 2:
         return 'No'
     else:
         return 'Yes'
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

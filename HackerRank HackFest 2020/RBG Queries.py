@@ -6,6 +6,7 @@ import random
 import re
 import sys
 
+
 #
 # Complete the 'mixColors' function below.
 #
@@ -17,35 +18,36 @@ import sys
 
 def mixColors(colors, queries):
     from collections import defaultdict
-    red=defaultdict(set)
-    blue=defaultdict(set)
-    green=defaultdict(set)
-    for r,b,g in colors:
-        red[r].add((r,b,g))
-        blue[b].add((r,b,g))
-        green[g].add((r,b,g))
-    result=[]
-    for r,b,g in queries:
-        reds=False
-        blues=False
-        greens=False
-        for x,y,z in red[r]:
-            if y<=b and z<=g:
-                reds=True
+    red = defaultdict(set)
+    blue = defaultdict(set)
+    green = defaultdict(set)
+    for r, b, g in colors:
+        red[r].add((r, b, g))
+        blue[b].add((r, b, g))
+        green[g].add((r, b, g))
+    result = []
+    for r, b, g in queries:
+        reds = False
+        blues = False
+        greens = False
+        for x, y, z in red[r]:
+            if y <= b and z <= g:
+                reds = True
                 break
-        for x,y,z in blue[b]:
-            if x<=r and z<=g:
-                blues=True
+        for x, y, z in blue[b]:
+            if x <= r and z <= g:
+                blues = True
                 break
-        for x,y,z in green[g]:
-            if x<=r and y<=b:
-                greens=True
+        for x, y, z in green[g]:
+            if x <= r and y <= b:
+                greens = True
                 break
         if reds and blues and greens:
             result.append('YES')
         else:
             result.append('NO')
     return result
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

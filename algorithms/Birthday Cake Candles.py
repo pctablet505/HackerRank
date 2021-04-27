@@ -6,13 +6,13 @@ import random
 import re
 import sys
 
+
 # Complete the birthdayCakeCandles function below.
 def birthdayCakeCandles(ar):
     ar.sort()
-    a=ar[-1]
+    a = ar[-1]
     return ar.count(a)
-    
-    
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

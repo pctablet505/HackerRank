@@ -6,9 +6,11 @@ import random
 import re
 import sys
 
+
 # Complete the solve function below.
 def solve(meal_cost, tip_percent, tax_percent):
-    print(round(meal_cost*(1+0.01*(tip_percent+tax_percent))))
+    print(round(meal_cost * (1 + 0.01 * (tip_percent + tax_percent))))
+
 
 if __name__ == '__main__':
     meal_cost = float(input())

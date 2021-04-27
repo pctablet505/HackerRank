@@ -6,46 +6,45 @@ import random
 import re
 import sys
 
-
 from collections import defaultdict
 from queue import deque
 
-    
-                                                             
+
 class Graph:
     def __init__(self):
-        self.graph=defaultdict(list)
-    def addEdge(self,u,v):
+        self.graph = defaultdict(list)
+
+    def addEdge(self, u, v):
         self.graph[u].append(v)
         self.graph[v].append(u)
-    def BFS(self,start,n):
-        dist=dict().fromkeys(range(1,n+1),-1)        
-        visited=dict().fromkeys(self.graph,False)
-        dist=dict().fromkeys(range(1,n+1),-1)
-        q=deque()
-        q.append((start,0))
+
+    def BFS(self, start, n):
+        dist = dict().fromkeys(range(1, n + 1), -1)
+        visited = dict().fromkeys(self.graph, False)
+        dist = dict().fromkeys(range(1, n + 1), -1)
+        q = deque()
+        q.append((start, 0))
         while q:
-            v,curr_cost=q.popleft()            
-            
+            v, curr_cost = q.popleft()
+
             for x in self.graph[v]:
                 if not visited[x]:
-                    visited[x]=True
-                    dist[x]=curr_cost+6
-                    q.append((x,dist[x]))
-        result=[]
-        for i in range(1,n+1):
-            if i!=start:
+                    visited[x] = True
+                    dist[x] = curr_cost + 6
+                    q.append((x, dist[x]))
+        result = []
+        for i in range(1, n + 1):
+            if i != start:
                 result.append(dist[i])
         return result
-        
-        
-        
+
 
 def bfs(n, m, edges, s):
-    g=Graph()
+    g = Graph()
     for x in edges:
-        g.addEdge(x[0],x[1])
-    return g.BFS(s,n)
+        g.addEdge(x[0], x[1])
+    return g.BFS(s, n)
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

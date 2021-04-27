@@ -6,15 +6,15 @@ import random
 import re
 import sys
 
+
 # Complete the birthday function below.
 def birthday(s, d, m):
-    count=0
+    count = 0
     for i in range(len(s)):
         for j in range(len(s)):
-            if sum(s[i:j+1])==d and len(s[i:j+1])==m:
-                count+=1
+            if sum(s[i:j + 1]) == d and len(s[i:j + 1]) == m:
+                count += 1
     return count
-
 
 
 if __name__ == '__main__':

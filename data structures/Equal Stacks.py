@@ -3,29 +3,31 @@
 import os
 import sys
 
+
 #
 # Complete the equalStacks function below.
 #
 def equalStacks(h1, h2, h3):
-    s1=h1[::-1]
-    s2=h2[::-1]
-    s3=h3[::-1]
-    l1=sum(h1)
-    l2=sum(h2)
-    l3=sum(h3)
-    count=0
+    s1 = h1[::-1]
+    s2 = h2[::-1]
+    s3 = h3[::-1]
+    l1 = sum(h1)
+    l2 = sum(h2)
+    l3 = sum(h3)
+    count = 0
 
-    while not(l1==l2==l3):
-        if l1==max((l1,l2,l3)):
-            l1-=s1.pop()
-            count+=1
-        elif l2==max((l1,l2,l3)):
-            l2-=s2.pop()
-            count+=1
-        elif l3==max((l1,l2,l3)):
-            l3-=s3.pop()
-            count+=1
+    while not (l1 == l2 == l3):
+        if l1 == max((l1, l2, l3)):
+            l1 -= s1.pop()
+            count += 1
+        elif l2 == max((l1, l2, l3)):
+            l2 -= s2.pop()
+            count += 1
+        elif l3 == max((l1, l2, l3)):
+            l3 -= s3.pop()
+            count += 1
     return l1
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

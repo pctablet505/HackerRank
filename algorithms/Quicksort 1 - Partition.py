@@ -6,21 +6,24 @@ import random
 import re
 import sys
 
+
 # Complete the quickSort function below.
 def quickSort(arr):
-    p=arr[0]
-    left=[]
-    right=[]
-    equal=[]
+    p = arr[0]
+    left = []
+    right = []
+    equal = []
     for i in range(len(arr)):
-        if arr[i]<p:
+        if arr[i] < p:
             left.append(arr[i])
-        elif arr[i]==p:
+        elif arr[i] == p:
             equal.append(arr[i])
         else:
             right.append(arr[i])
-    result=left+equal+right
+    result = left + equal + right
     return result
+
+
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 

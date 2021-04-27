@@ -6,20 +6,22 @@ import random
 import re
 import sys
 
+
 # Complete the candies function below.
 def candies(n, arr):
-    d=[0]*n
-    d[0]=1
-    for i in range(1,n):
-        if arr[i]>arr[i-1]:
-            d[i]=d[i-1]+1
+    d = [0] * n
+    d[0] = 1
+    for i in range(1, n):
+        if arr[i] > arr[i - 1]:
+            d[i] = d[i - 1] + 1
         else:
-            d[i]=1
-    for i in range(n-1,0,-1):
-        if arr[i]<arr[i-1]:
-            d[i-1]=max(d[i]+1,d[i-1])
-        
+            d[i] = 1
+    for i in range(n - 1, 0, -1):
+        if arr[i] < arr[i - 1]:
+            d[i - 1] = max(d[i] + 1, d[i - 1])
+
     return sum(d)
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

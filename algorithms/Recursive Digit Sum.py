@@ -6,12 +6,16 @@ import random
 import re
 import sys
 
+
 def solve(s):
-    if len(s)==1:
+    if len(s) == 1:
         return s
     return solve(str(sum([int(x) for x in s])))
+
+
 def superDigit(n, k):
-    return solve(str(sum([int(x) for x in n])*k))
+    return solve(str(sum([int(x) for x in n]) * k))
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

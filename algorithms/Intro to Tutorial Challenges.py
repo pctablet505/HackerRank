@@ -6,9 +6,11 @@ import random
 import re
 import sys
 
+
 # Complete the introTutorial function below.
 def introTutorial(V, arr):
     return arr.index(V)
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

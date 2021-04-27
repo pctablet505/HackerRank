@@ -6,6 +6,7 @@ import random
 import re
 import sys
 
+
 #
 # Complete the 'gradingStudents' function below.
 #
@@ -14,11 +15,12 @@ import sys
 #
 
 def gradingStudents(grades):
-    for i in range(len(grades)):        
-        if grades[i]>37:
-            if grades[i]%5>=3:
-                grades[i]=(grades[i]-grades[i]%5)+5
+    for i in range(len(grades)):
+        if grades[i] > 37:
+            if grades[i] % 5 >= 3:
+                grades[i] = (grades[i] - grades[i] % 5) + 5
     return grades
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

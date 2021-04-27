@@ -6,18 +6,18 @@ import random
 import re
 import sys
 
+
 # Complete the fibonacciModified function below.
-def fibonacciModified(t1,t2,n):
-    a=t1
-    b=t2
-    if n==0:
+def fibonacciModified(t1, t2, n):
+    a = t1
+    b = t2
+    if n == 0:
         return a
-    for i in range(2,n):
-        c=a+(b**2)
-        a=b
-        b=c
+    for i in range(2, n):
+        c = a + (b ** 2)
+        a = b
+        b = c
     return b
-    
 
 
 if __name__ == '__main__':

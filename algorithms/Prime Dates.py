@@ -1,5 +1,7 @@
 import re
+
 month = []
+
 
 def updateLeapYear(year):
     if year % 400 == 0:
@@ -10,6 +12,7 @@ def updateLeapYear(year):
         month[2] = 29
     else:
         month[2] = 28
+
 
 def storeMonth():
     month[1] = 31
@@ -25,11 +28,12 @@ def storeMonth():
     month[11] = 30
     month[12] = 31
 
+
 def findPrimeDates(d1, m1, y1, d2, m2, y2):
     storeMonth()
     result = 0
 
-    while(True):
+    while (True):
         x = d1
         x = x * 100 + m1
         x = x * 10000 + y1
@@ -43,9 +47,10 @@ def findPrimeDates(d1, m1, y1, d2, m2, y2):
             m1 = m1 + 1
             d1 = 1
             if m1 > 12:
-                y1 =  y1 + 1
+                y1 = y1 + 1
                 m1 = 1
     return result;
+
 
 for i in range(1, 15):
     month.append(31)
@@ -61,6 +66,3 @@ y2 = int(date[5])
 
 result = findPrimeDates(d1, m1, y1, d2, m2, y2)
 print(result)
-
-
-

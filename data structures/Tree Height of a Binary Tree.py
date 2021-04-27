@@ -1,5 +1,3 @@
-
-
 # Enter your code here. Read input from STDIN. Print output to STDOUT
 '''
 class Node:
@@ -11,11 +9,11 @@ class Node:
 
        // this is a node of the tree , which contains info as data, left , right
 '''
+
+
 def height(root):
     if not root:
         return -1
     else:
-        greater=max(height(root.right),height(root.left))
-        return greater +1
-
-
+        greater = max(height(root.right), height(root.left))
+        return greater + 1

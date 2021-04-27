@@ -6,12 +6,13 @@ import random
 import re
 import sys
 
+
 # Complete the canConstruct function below.
 def canConstruct(a):
-    s=0
+    s = 0
     for x in a:
-        s+=sum([int(y) for y in str(x)])
-    if s%3 ==0:
+        s += sum([int(y) for y in str(x)])
+    if s % 3 == 0:
         return 'Yes'
     return 'No'
 

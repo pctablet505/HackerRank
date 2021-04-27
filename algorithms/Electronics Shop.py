@@ -4,19 +4,21 @@ import os
 import sys
 from itertools import combinations as cb
 
+
 def getMoneySpent(keyboards, drives, b):
     keyboards.sort()
     drives.sort()
-    price=[]
+    price = []
     for x in keyboards:
         for y in drives:
-            if x<b and y<b:
-                sum=x+y
-                if sum<=b:
+            if x < b and y < b:
+                sum = x + y
+                if sum <= b:
                     price.append(sum)
-    if price==[]:
+    if price == []:
         return -1
     return max(price)
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

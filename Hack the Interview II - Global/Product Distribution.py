@@ -6,6 +6,7 @@ import random
 import re
 import sys
 
+
 #
 # Complete the 'maxScore' function below.
 #
@@ -15,21 +16,22 @@ import sys
 #  2. INTEGER m
 #
 
-def maxScore(a,m):
+def maxScore(a, m):
     a.sort()
-    s=1
-    n=len(a)
-    c=0
-    i=0
-    while i<n:
-        if n-i>=m:
-            c+=s*sum(a[i:i+m])
-            s+=1
-            i+=m
+    s = 1
+    n = len(a)
+    c = 0
+    i = 0
+    while i < n:
+        if n - i >= m:
+            c += s * sum(a[i:i + m])
+            s += 1
+            i += m
         else:
             break
-    c+=(s-1)*sum(a[i:])
-    return c%(10**9+7)
+    c += (s - 1) * sum(a[i:])
+    return c % (10 ** 9 + 7)
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

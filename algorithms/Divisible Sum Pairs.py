@@ -6,15 +6,15 @@ import random
 import re
 import sys
 
+
 # Complete the divisibleSumPairs function below.
 def divisibleSumPairs(n, k, arr):
-    count=0
+    count = 0
     for i in range(n):
-        for j in range(i+1,n):
-            if (arr[i]+arr[j])%k==0:
-                count+=1
+        for j in range(i + 1, n):
+            if (arr[i] + arr[j]) % k == 0:
+                count += 1
     return count
-
 
 
 if __name__ == '__main__':

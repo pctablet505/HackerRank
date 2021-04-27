@@ -6,17 +6,16 @@ import random
 import re
 import sys
 
+
 # Complete the howManyGames function below.
 def howManyGames(p, d, m, s):
-    count=0
-    while s>=p:
-        count+=1
-        s-=p
-        p=p-d if p-d>=m else m
-        
+    count = 0
+    while s >= p:
+        count += 1
+        s -= p
+        p = p - d if p - d >= m else m
+
     return count
-
-
 
 
 if __name__ == '__main__':

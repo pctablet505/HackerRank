@@ -7,6 +7,7 @@ import re
 import sys
 from collections import defaultdict
 
+
 #
 # Complete the 'nonDivisibleSubset' function below.
 #
@@ -17,23 +18,18 @@ from collections import defaultdict
 #
 
 def nonDivisibleSubset(k, s):
-    d=[0]*k
+    d = [0] * k
     for x in s:
-        d[x%k]+=1
-    
-    count=min(d[0],1)
-    for i in range(1,(k//2)+1):
-        if i!=k-i:
-            count+=max(d[i],d[k-i])
-    if k%2==0:
-        count+=1
+        d[x % k] += 1
+
+    count = min(d[0], 1)
+    for i in range(1, (k // 2) + 1):
+        if i != k - i:
+            count += max(d[i], d[k - i])
+    if k % 2 == 0:
+        count += 1
     return count
- 
 
-
-
-
-    
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

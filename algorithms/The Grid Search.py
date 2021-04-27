@@ -6,24 +6,25 @@ import random
 import re
 import sys
 
+
 # Complete the gridSearch function below.
 def gridSearch(G, P):
-    m=len(G)
-    n=len(G[0])
-    r=len(P)
-    c=len(P[0])
+    m = len(G)
+    n = len(G[0])
+    r = len(P)
+    c = len(P[0])
 
     for i in range(m):
         for j in range(n):
-            if G[i][j]==P[0][0]:
-                
-                if i+r<=m and j+c<=n:
-                    f=True
+            if G[i][j] == P[0][0]:
+
+                if i + r <= m and j + c <= n:
+                    f = True
                     for x in range(r):
-                        #print(P[x],G[i+x][j:j+len(P[x])])
-                        if P[x]==G[i+x][j:j+len(P[x])]:
+                        # print(P[x],G[i+x][j:j+len(P[x])])
+                        if P[x] == G[i + x][j:j + len(P[x])]:
                             continue
-                        f=False
+                        f = False
                         break
                     if f:
                         return 'YES'
@@ -40,6 +41,7 @@ def gridSearch(G, P):
                         return 'YES'
                     '''
     return 'NO'
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

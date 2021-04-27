@@ -5,11 +5,11 @@ def size(node):
 
 
 class Node:
-        
+
     def __init__(self, id=-1):
         self.id = id
-        self.left =None
-        self.right =None
+        self.left = None
+        self.right = None
         self.parent = None
         self.size = 1
         self.rev = False
@@ -30,13 +30,13 @@ class Node:
 def zig(p):
     q = p.parent
     r = q.parent
-    q.left=p.right
+    q.left = p.right
     if q.left:
         q.left.parent = q
     p.right = q
     q.parent = p
-    p.parent=r
-    
+    p.parent = r
+
     if p.parent:
         if r.left == q:
             r.left = p
@@ -48,12 +48,12 @@ def zig(p):
 def zag(p):
     q = p.parent
     r = q.parent
-    q.right=p.left
+    q.right = p.left
     if q.right:
         q.right.parent = q
     p.left = q
     q.parent = p
-    p.parent=r
+    p.parent = r
     if p.parent:
         if r.left == q:
             r.left = p
@@ -64,9 +64,9 @@ def zag(p):
 
 def splay(root, p, b=None):
     p.release()
-    while p.parent != b:        
+    while p.parent != b:
         q = p.parent
-        
+
         if q.parent == b:
             q.release()
             p.release()
@@ -116,33 +116,31 @@ def find(k, p):
     return p
 
 
-def build( a, b):
-    
+def build(a, b):
     global T
-    
+
     if a > b:
         return None
     if a == b:
         prx = T[a]
-        prx.left =None
-        prx.right =None 
+        prx.left = None
+        prx.right = None
         prx.parent = None
-        
+
         return prx
-    mid = (a + b)//2
+    mid = (a + b) // 2
     prx = T[mid]
     prx.parent = None
 
-    prx.left = build( a, mid - 1)
-    
+    prx.left = build(a, mid - 1)
+
     if prx.left:
         prx.left.parent = prx
-    prx.right = build( mid + 1, b)
+    prx.right = build(mid + 1, b)
     if prx.right:
         prx.right.parent = prx
     prx.update()
-    
-    
+
     return prx
 
 
@@ -153,20 +151,19 @@ def reverse(root, a, b):
     rgx = b + 1
     prev = find(lfx - 1, root)
     nxt = find(rgx + 1, root)
-    root=splay(root, prev)
-    root=splay(root, nxt, prev)
+    root = splay(root, prev)
+    root = splay(root, nxt, prev)
     nxt.left.rev ^= True
     return root
+
+
 def inorder(root):
     if root:
         if root.left:
             inorder(root.left)
-        print(root.id,end=' ')
+        print(root.id, end=' ')
         if root.right:
             inorder(root.right)
-    
-
-
 
 
 n, q = map(int, input().split())
@@ -175,31 +172,28 @@ T = [None for i in range(n + 2)]
 for i in range(n + 2):
     T[i] = Node(i)
 
-
-root = build( 0, n + 1)
+root = build(0, n + 1)
 
 s = ''
 for k in range(q):
 
-    #print(query)
-    
+    # print(query)
+
     query = tuple(map(int, input().split()))
     t = query[0]
-    
+
     if t == 1:
         i, j = query[1], query[2]
-        root=reverse(root, i, j)
-    
+        root = reverse(root, i, j)
+
     elif t == 2:
         i = query[1]
         ptx = T[i]
         root = splay(root, ptx)
         s += 'element {} is at position {}\n'.format(i, size(ptx.left))
-    
+
     else:
         i = query[1]
-        ptx = find(i + 1,root)
+        ptx = find(i + 1, root)
         s += 'element at position {} is {}\n'.format(i, ptx.id)
 print(s)
-
-

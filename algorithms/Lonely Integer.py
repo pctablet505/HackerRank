@@ -6,16 +6,17 @@ import random
 import re
 import sys
 
+
 # Complete the lonelyinteger function below.
 def lonelyinteger(a):
     a.sort()
-    prev=a.pop()
+    prev = a.pop()
     while a:
-        curr=a.pop()
-        if prev!=curr:
+        curr = a.pop()
+        if prev != curr:
             return prev
         else:
-            prev=a.pop()
+            prev = a.pop()
     else:
         return prev
 

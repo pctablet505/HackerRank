@@ -6,6 +6,7 @@ import random
 import re
 import sys
 
+
 #
 # Complete the 'diagonalDifference' function below.
 #
@@ -14,14 +15,15 @@ import sys
 #
 
 def diagonalDifference(arr):
-    a=0
-    b=0
+    a = 0
+    b = 0
     for i in range(len(arr)):
-        a+=arr[i][i]
-        b+=arr[i][len(arr)-1-i]
-    return abs((a-b))
+        a += arr[i][i]
+        b += arr[i][len(arr) - 1 - i]
+    return abs((a - b))
 
     # Write your code here
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

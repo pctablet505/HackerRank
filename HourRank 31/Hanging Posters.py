@@ -6,6 +6,7 @@ import random
 import re
 import sys
 
+
 #
 # Complete the 'solve' function below.
 #
@@ -17,16 +18,17 @@ import sys
 #
 
 def solve(h, wallPoints, lengths):
-    min=0
+    min = 0
     for i in range(len(wallPoints)):
-        temp=wallPoints[i]-h-lengths[i]/4
-        if temp>min:
-            min=temp
-    
-    if min%1>0:
-        min=min//1+1
+        temp = wallPoints[i] - h - lengths[i] / 4
+        if temp > min:
+            min = temp
+
+    if min % 1 > 0:
+        min = min // 1 + 1
     return int(min)
     # Write your code here
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

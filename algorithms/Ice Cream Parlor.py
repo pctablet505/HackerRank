@@ -6,12 +6,12 @@ import random
 import re
 import sys
 
+
 # Complete the icecreamParlor function below.
 def icecreamParlor(m, a):
     for i, cost in enumerate(a):
-        if (m-cost) in a[i+1:]:
-            return (i+1,a[i+1:].index(m-cost)+i+1+1)
-    
+        if (m - cost) in a[i + 1:]:
+            return (i + 1, a[i + 1:].index(m - cost) + i + 1 + 1)
 
 
 if __name__ == '__main__':

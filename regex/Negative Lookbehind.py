@@ -1,2 +1,1 @@
-Regex_Pattern = r"(?<![aeiouAEIOU])."	# Do not delete 'r'.
-
+Regex_Pattern = r"(?<![aeiouAEIOU])."  # Do not delete 'r'.

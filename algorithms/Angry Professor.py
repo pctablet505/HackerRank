@@ -6,15 +6,17 @@ import random
 import re
 import sys
 
+
 # Complete the angryProfessor function below.
 def angryProfessor(k, a):
-    count=0
+    count = 0
     for x in a:
-        if x<=0:
-            count+=1
-    if count>=k:
+        if x <= 0:
+            count += 1
+    if count >= k:
         return "NO"
     return "YES"
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

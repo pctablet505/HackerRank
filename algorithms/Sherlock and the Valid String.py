@@ -7,6 +7,7 @@ import re
 import sys
 from collections import Counter
 
+
 # Complete the isValid function below.
 def isValid(s):
     c = Counter([x for x in s])
@@ -17,7 +18,7 @@ def isValid(s):
     if len(distinct_counts) == 1:
         return 'YES'
     a, b = sorted(distinct_counts)
-    print(a,b)
+    print(a, b)
     ca = 0
     cb = 0
     for x in c:
@@ -26,13 +27,14 @@ def isValid(s):
         else:
             cb += 1
     ca, cb = ([ca, cb])
-    if a==1 and ca>1:
+    if a == 1 and ca > 1:
         return 'NO'
-    if b==1 and cb>1:
+    if b == 1 and cb > 1:
         return 'NO'
-    if ca==1 and a-b>1 or cb==1 and b-a>1:
+    if ca == 1 and a - b > 1 or cb == 1 and b - a > 1:
         return 'NO'
     return 'YES'
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

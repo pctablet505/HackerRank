@@ -6,22 +6,22 @@ import random
 import re
 import sys
 
+
 # Complete the jumpingOnClouds function below.
 def jumpingOnClouds(c, k):
-    i=0
-    l=len(c)
-    e=100
-    while e>=0:
-        print(i,e,c[(i+k)%l])
-        if c[(i+k)%l]==1:
-            e-=3
+    i = 0
+    l = len(c)
+    e = 100
+    while e >= 0:
+        print(i, e, c[(i + k) % l])
+        if c[(i + k) % l] == 1:
+            e -= 3
         else:
-            e-=1
-        i+=k
-        if i%l==0:
+            e -= 1
+        i += k
+        if i % l == 0:
             break
     return e
-
 
 
 if __name__ == '__main__':

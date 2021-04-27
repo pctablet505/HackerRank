@@ -6,12 +6,14 @@ import random
 import re
 import sys
 
-# Complete the pairs function below.
-def pairs(k,n, arr):
-    a=set(arr)
-    b=set(x+k for x in arr)
 
-    return len(a&b)
+# Complete the pairs function below.
+def pairs(k, n, arr):
+    a = set(arr)
+    b = set(x + k for x in arr)
+
+    return len(a & b)
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
@@ -24,7 +26,7 @@ if __name__ == '__main__':
 
     arr = list(map(int, input().rstrip().split()))
 
-    result = pairs(k,n, arr)
+    result = pairs(k, n, arr)
 
     fptr.write(str(result) + '\n')
 

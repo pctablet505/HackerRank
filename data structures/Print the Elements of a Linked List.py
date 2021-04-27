@@ -1,5 +1,3 @@
-
-
 # Complete the printLinkedList function below.
 
 #
@@ -11,8 +9,7 @@
 #
 #
 def printLinkedList(head):
-    temp=head
+    temp = head
     while temp:
         print(temp.data)
-        temp=temp.next
-
+        temp = temp.next

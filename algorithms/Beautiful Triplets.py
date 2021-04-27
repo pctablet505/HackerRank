@@ -6,20 +6,17 @@ import random
 import re
 import sys
 
+
 # Complete the beautifulTriplets function below.
 def beautifulTriplets(x, arr):
-    d=[False]*((2*10**4)+50)
+    d = [False] * ((2 * 10 ** 4) + 50)
     for y in arr:
-        d[y]=True
-    c=0
+        d[y] = True
+    c = 0
     for n in arr:
-        if d[n+x] and d[n+2*x]:
-            c+=1
+        if d[n + x] and d[n + 2 * x]:
+            c += 1
     return c
-
-
-
-    
 
 
 if __name__ == '__main__':

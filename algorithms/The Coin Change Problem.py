@@ -6,6 +6,7 @@ import random
 import re
 import sys
 
+
 #
 # Complete the 'getWays' function below.
 #
@@ -16,15 +17,16 @@ import sys
 #
 
 def getWays(n, c):
-    m=len(c)
-    table=[0]*(n+1)
-    table[0]=1
+    m = len(c)
+    table = [0] * (n + 1)
+    table[0] = 1
     for i in range(m):
-        for j in range(c[i],n+1):
-            table[j]+=table[j-c[i]]
+        for j in range(c[i], n + 1):
+            table[j] += table[j - c[i]]
     return table[n]
 
     # Write your code here
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

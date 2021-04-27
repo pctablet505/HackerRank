@@ -7,60 +7,55 @@ import re
 import sys
 from collections import defaultdict
 from collections import deque
-from math import ceil,log2
-
+from math import ceil, log2
 
 
 class Graph:
     def __init__(self):
         self.graph = defaultdict(list)
-        self.subtree_weights=dict()
-        self.parents=defaultdict(list)
-        self.sums=defaultdict(list)
-        
-        
+        self.subtree_weights = dict()
+        self.parents = defaultdict(list)
+        self.sums = defaultdict(list)
 
     def addEdge(self, u, v):
-        self.graph[u].append(v)        
+        self.graph[u].append(v)
         self.graph[v].append(u)
 
-    
-            
-    def getPath(self, start,end):
-        if start==end:
-            return [start]        
-        def util(parent,end):
-            #print(parent)
-            curr=end
-            path=[end]
+    def getPath(self, start, end):
+        if start == end:
+            return [start]
+
+        def util(parent, end):
+            # print(parent)
+            curr = end
+            path = [end]
             while curr in parent:
                 path.append(parent[curr])
-                curr=parent[curr]
+                curr = parent[curr]
             return path
-        
-        
+
         visited = set()
         q = deque()
         q.appendleft(start)
         visited.add(start)
-        parent={}
+        parent = {}
         while len(q):
             v = q.pop()
-            
-            #print(v)
+
+            # print(v)
             for x in self.graph[v]:
-                if x not in  visited:
-                    #path.append(x.vertex)
-                    parent[x]=v
+                if x not in visited:
+                    # path.append(x.vertex)
+                    parent[x] = v
                     q.appendleft(x)
                     visited.add(x)
-                    if x==end:
-                        #parent[x.vertex]=v
-                        return util(parent,end)
-
+                    if x == end:
+                        # parent[x.vertex]=v
+                        return util(parent, end)
 
     def longestPahInTree(self):
         start = next(iter(self.graph))
+
         def util(self, start):
             farthest = start
             visited = set()
@@ -88,55 +83,54 @@ class Graph:
         return root
 
     def getTree(self):
-        self.root = 1      
+        self.root = 1
         self.parent = dict()
         self.parent[self.root] = None
-        
 
         def DFS(self):
             stack = []
             visited = set()
             current = self.root
             visited.add(current)
-            stack.append(current)            
+            stack.append(current)
             while len(stack) > 0:
-                v = stack.pop()  
-                
-                for x in self.graph[v]:    
+                v = stack.pop()
+
+                for x in self.graph[v]:
                     if x not in visited:
                         stack.append(x)
                         visited.add(x)
-                        self.parent[x] = v                        
-                        
+                        self.parent[x] = v
+
         DFS(self)
-    
-    def assignSubtreeWeights(self):        
-        def util(self,u):            
-            for x in self.graph[u]:                
-                if x !=u and x!=self.parent[u]:
-                    self.subtree_weights[u]+=util(self,x)
+
+    def assignSubtreeWeights(self):
+        def util(self, u):
+            for x in self.graph[u]:
+                if x != u and x != self.parent[u]:
+                    self.subtree_weights[u] += util(self, x)
             self.sums[self.subtree_weights[u]].append(u)
             return self.subtree_weights[u]
-        util(self,self.root)
-        
-                
- 
+
+        util(self, self.root)
+
 
 # Complete the evenForest function below.
 def evenForest(t_nodes, t_edges, t_from, t_to):
-    g=Graph()
+    g = Graph()
     for i in range(t_edges):
-        g.addEdge(t_from[i],t_to[i])
+        g.addEdge(t_from[i], t_to[i])
     for x in g.graph:
-        g.subtree_weights[x]=1
+        g.subtree_weights[x] = 1
     g.getTree()
     g.assignSubtreeWeights()
-    res=0
-    #print(g.subtree_weights)
+    res = 0
+    # print(g.subtree_weights)
     for x in g.subtree_weights:
-        if x!=1 and g.subtree_weights[x]%2==0:
-            res+=1
+        if x != 1 and g.subtree_weights[x] % 2 == 0:
+            res += 1
     return res
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

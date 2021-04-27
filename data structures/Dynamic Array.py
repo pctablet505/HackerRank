@@ -6,6 +6,7 @@ import random
 import re
 import sys
 
+
 #
 # Complete the 'dynamicArray' function below.
 #
@@ -16,23 +17,22 @@ import sys
 #
 
 def dynamicArray(n, queries):
-    seqlist=[]
-    lastAnswer=0
-    result=[]
+    seqlist = []
+    lastAnswer = 0
+    result = []
     for i in range(n):
         seqlist.append([])
-    for a,x,y in queries:
-        index=(x^lastAnswer)%n
-        
-        if a==1:            
+    for a, x, y in queries:
+        index = (x ^ lastAnswer) % n
+
+        if a == 1:
             seqlist[index].append(y)
-        if a==2:
-            size=len(seqlist[index])
-            lastAnswer=seqlist[index][y%size]
+        if a == 2:
+            size = len(seqlist[index])
+            lastAnswer = seqlist[index][y % size]
             result.append(lastAnswer)
     return result
 
-    
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

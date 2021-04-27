@@ -6,16 +6,16 @@ import random
 import re
 import sys
 
+
 # Complete the viralAdvertising function below.
 def viralAdvertising(n):
-    s=2
-    prev=2
-    for i in range(2,n+1):
-        curr=(prev*3)//2
-        s+=curr
-        prev=curr
+    s = 2
+    prev = 2
+    for i in range(2, n + 1):
+        curr = (prev * 3) // 2
+        s += curr
+        prev = curr
     return s
-
 
 
 if __name__ == '__main__':

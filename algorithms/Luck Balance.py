@@ -7,20 +7,19 @@ import re
 import sys
 import heapq
 
+
 # Complete the luckBalance function below.
 def luckBalance(k, contests):
-    luck=0
-    imp=[]
+    luck = 0
+    imp = []
     for x in contests:
-        if x[1]==0:
-            luck+=x[0]
+        if x[1] == 0:
+            luck += x[0]
         else:
             imp.append(x[0])
-    luck-=sum(imp)
-    luck+=2*sum(heapq.nlargest(k,imp))
+    luck -= sum(imp)
+    luck += 2 * sum(heapq.nlargest(k, imp))
     return luck
-
-
 
 
 if __name__ == '__main__':

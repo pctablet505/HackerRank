@@ -6,9 +6,6 @@ import random
 import re
 import sys
 
-
-
 if __name__ == '__main__':
     timeCharged = float(input())
-    print(min(2*timeCharged,8.00))
-    
+    print(min(2 * timeCharged, 8.00))

@@ -6,14 +6,16 @@ import random
 import re
 import sys
 
+
 # Complete the findMedian function below.
 def findMedian(arr):
     arr.sort()
-    n=len(arr)
-    mid=n//2
-    if n&1==1:
+    n = len(arr)
+    mid = n // 2
+    if n & 1 == 1:
         return arr[mid]
-    return (arr[mid]+arr[mid-1])/2
+    return (arr[mid] + arr[mid - 1]) / 2
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

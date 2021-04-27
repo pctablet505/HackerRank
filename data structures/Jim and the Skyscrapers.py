@@ -4,22 +4,18 @@ import os
 import sys
 
 
-
 def solve(arr):
-    stack=[]
-    count=0
+    stack = []
+    count = 0
     for h in arr:
-        while stack and h>stack[-1][0]:
+        while stack and h > stack[-1][0]:
             stack.pop()
-        if stack and h==stack[-1][0]:
-            count+=stack[-1][1]
-            stack[-1][1]+=1
+        if stack and h == stack[-1][0]:
+            count += stack[-1][1]
+            stack[-1][1] += 1
         else:
-            stack.append([h,1])
-    return 2*count
-
-
-
+            stack.append([h, 1])
+    return 2 * count
 
 
 if __name__ == '__main__':

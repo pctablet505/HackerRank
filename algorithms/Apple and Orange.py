@@ -6,17 +6,19 @@ import random
 import re
 import sys
 
+
 # Complete the countApplesAndOranges function below.
 def countApplesAndOranges(s, t, a, b, apples, oranges):
-    no_oranges=0
-    no_apple=0
+    no_oranges = 0
+    no_apple = 0
     for x in apples:
-        if s<=x+a<=t:
-            no_apple+=1
+        if s <= x + a <= t:
+            no_apple += 1
     for x in oranges:
-        if s<=x+b<=t:
-            no_oranges+=1
-    print(no_apple,no_oranges,sep='\n')
+        if s <= x + b <= t:
+            no_oranges += 1
+    print(no_apple, no_oranges, sep='\n')
+
 
 if __name__ == '__main__':
     st = input().split()

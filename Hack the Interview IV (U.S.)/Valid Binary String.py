@@ -6,6 +6,7 @@ import random
 import re
 import sys
 
+
 #
 # Complete the 'minimumMoves' function below.
 #
@@ -16,22 +17,22 @@ import sys
 #
 
 def minimumMoves(s, d):
-    s=[x for x in s]
-    c=0
-    l=len(s)
-    i=0
-    while i<l-d+1:
-        for j in range(i+d-1,i-1,-1):
-            if s[j]=='1':
-                i=j
+    s = [x for x in s]
+    c = 0
+    l = len(s)
+    i = 0
+    while i < l - d + 1:
+        for j in range(i + d - 1, i - 1, -1):
+            if s[j] == '1':
+                i = j
                 break
-        
-        if j==i and s[j]!='1':
-            s[i+d-1]='1'
-            c+=1
-        i+=1
+
+        if j == i and s[j] != '1':
+            s[i + d - 1] = '1'
+            c += 1
+        i += 1
     return c
-        
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

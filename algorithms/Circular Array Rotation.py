@@ -6,11 +6,12 @@ import random
 import re
 import sys
 
+
 def circularArrayRotation(a, d, queries):
-    d=d%len(a)
-    result=[]
-    a=a[::-1]
-    a=a[:d][::-1]+a[d:][::-1]
+    d = d % len(a)
+    result = []
+    a = a[::-1]
+    a = a[:d][::-1] + a[d:][::-1]
     for x in queries:
         result.append(a[x])
     return result

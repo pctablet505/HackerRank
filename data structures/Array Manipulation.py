@@ -6,19 +6,21 @@ import random
 import re
 import sys
 
+
 # Complete the arrayManipulation function below.
 def arrayManipulation(n, queries):
-    arr=[0]*(n+1)
-    for l,r,s in queries:
-        arr[l-1]+=s
-        arr[r]-=s
-    max=0
-    sum=0
+    arr = [0] * (n + 1)
+    for l, r, s in queries:
+        arr[l - 1] += s
+        arr[r] -= s
+    max = 0
+    sum = 0
     for x in arr:
-        sum+=x
-        if max<=sum:
-            max=sum
+        sum += x
+        if max <= sum:
+            max = sum
     return max
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

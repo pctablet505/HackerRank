@@ -6,13 +6,15 @@ import random
 import re
 import sys
 
+
 # Complete the marcsCakewalk function below.
 def marcsCakewalk(calorie):
     calorie.sort(reverse=True)
-    output=0
+    output = 0
     for i in range(len(calorie)):
-        output+=(2**i)*calorie[i]
+        output += (2 ** i) * calorie[i]
     return output
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

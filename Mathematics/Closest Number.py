@@ -3,17 +3,19 @@
 import os
 import sys
 
+
 #
 # Complete the closestNumber function below.
 #
 def closestNumber(a, b, x):
-    n=a**b
-    l=x*(n//x)
-    u=x*((n//x)+1)
-    if abs(l-n)>abs(u-n):
+    n = a ** b
+    l = x * (n // x)
+    u = x * ((n // x) + 1)
+    if abs(l - n) > abs(u - n):
         return u
     else:
         return l
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

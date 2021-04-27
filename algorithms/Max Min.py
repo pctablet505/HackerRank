@@ -6,15 +6,17 @@ import random
 import re
 import sys
 
+
 # Complete the maxMin function below.
 def maxMin(k, arr):
     arr.sort()
-    m=float('inf')
-    n=len(arr)
-    
-    for i in range(n-k+1):
-        m=min(m,(arr[i+k-1]-arr[i]))
+    m = float('inf')
+    n = len(arr)
+
+    for i in range(n - k + 1):
+        m = min(m, (arr[i + k - 1] - arr[i]))
     return m
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

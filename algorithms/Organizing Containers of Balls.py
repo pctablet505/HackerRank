@@ -6,19 +6,19 @@ import random
 import re
 import sys
 
+
 # Complete the organizingContainers function below.
 def organizingContainers(container):
-    
-    n=len(container)
-    transpose=[[0]*n for i in range(n)]
+    n = len(container)
+    transpose = [[0] * n for i in range(n)]
     for i in range(n):
         for j in range(n):
-            transpose[j][i]=container[i][j]
-    h=[sum(x) for x in container]
-    v=[sum(x) for x in transpose]
+            transpose[j][i] = container[i][j]
+    h = [sum(x) for x in container]
+    v = [sum(x) for x in transpose]
     h.sort()
     v.sort()
-    if h==v:
+    if h == v:
         return 'Possible'
     return 'Impossible'
 

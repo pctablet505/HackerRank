@@ -6,13 +6,15 @@ import random
 import re
 import sys
 
+
 # Complete the hurdleRace function below.
 def hurdleRace(k, height):
-    M=max(height)
-    if k>M:
+    M = max(height)
+    if k > M:
         return 0
     else:
-        return M-k
+        return M - k
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

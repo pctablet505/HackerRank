@@ -1,2 +1,1 @@
-Regex_Pattern = r'^[a-zA-Z]*e*?s$'	# Do not delete 'r'.
-
+Regex_Pattern = r'^[a-zA-Z]*e*?s$'  # Do not delete 'r'.

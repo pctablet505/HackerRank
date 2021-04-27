@@ -6,20 +6,22 @@ import random
 import re
 import sys
 
+
 # Complete the hourglassSum function below.
 def hourglassSum(arr):
-    sumlist=[]
+    sumlist = []
 
     for i in range(4):
         for j in range(4):
-            temp=0
+            temp = 0
             for p in range(3):
                 for q in range(3):
-                    temp+=arr[i+p][j+q]
-            temp-=(arr[i+1][j]+arr[i+1][j+2])
-            sumlist.append(temp)     
-            
+                    temp += arr[i + p][j + q]
+            temp -= (arr[i + 1][j] + arr[i + 1][j + 2])
+            sumlist.append(temp)
+
     return max(sumlist)
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

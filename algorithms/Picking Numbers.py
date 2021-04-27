@@ -6,6 +6,7 @@ import random
 import re
 import sys
 
+
 #
 # Complete the 'pickingNumbers' function below.
 #
@@ -15,12 +16,13 @@ import sys
 
 def pickingNumbers(a):
     from collections import Counter
-    c=Counter(a)
-    maximum=0
+    c = Counter(a)
+    maximum = 0
     for x in a:
-        maximum=max(maximum,c[x]+c[x-1])
+        maximum = max(maximum, c[x] + c[x - 1])
 
     return maximum
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

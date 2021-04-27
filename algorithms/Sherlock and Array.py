@@ -6,21 +6,22 @@ import random
 import re
 import sys
 
+
 # Complete the balancedSums function below.
 def balancedSums(arr):
-    n=len(arr)
-    sums=[0]*n
-    sums[0]=arr[0]
+    n = len(arr)
+    sums = [0] * n
+    sums[0] = arr[0]
     for i in range(n):
-        sums[i]=sums[i-1]+arr[i]
+        sums[i] = sums[i - 1] + arr[i]
     print(sums)
-    if n==1:
+    if n == 1:
         return "YES"
-    for i in range(n-1):
-        if i==0:
-            if sums[n-1]-sums[i]==0:
+    for i in range(n - 1):
+        if i == 0:
+            if sums[n - 1] - sums[i] == 0:
                 return "YES"
-        if sums[i-1]==sums[n-1]-sums[i]:
+        if sums[i - 1] == sums[n - 1] - sums[i]:
             return "YES"
 
     return "NO"

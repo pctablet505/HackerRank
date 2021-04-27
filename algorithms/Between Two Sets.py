@@ -6,6 +6,7 @@ import random
 import re
 import sys
 
+
 #
 # Complete the 'getTotalX' function below.
 #
@@ -16,13 +17,14 @@ import sys
 #
 
 def getTotalX(a, b):
-    test1=True
-    test2=True
-    count=0
-    for i in range(1,max(b)+1):
-        if all(i%ai==0 for ai in a) and all(bi % i==0 for bi in b):
-            count+=1
+    test1 = True
+    test2 = True
+    count = 0
+    for i in range(1, max(b) + 1):
+        if all(i % ai == 0 for ai in a) and all(bi % i == 0 for bi in b):
+            count += 1
     return count
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

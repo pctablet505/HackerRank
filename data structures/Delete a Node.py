@@ -1,5 +1,3 @@
-
-
 # Complete the deleteNode function below.
 
 #
@@ -11,14 +9,12 @@
 #
 #
 def deleteNode(head, position):
-    if position==0:
-        head=head.next
+    if position == 0:
+        head = head.next
         return head
-    node=head
-    
-    for i in range(position-1):
-        node=node.next
-    node.next=node.next.next
+    node = head
+
+    for i in range(position - 1):
+        node = node.next
+    node.next = node.next.next
     return head
-
-

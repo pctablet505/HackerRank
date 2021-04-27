@@ -1,10 +1,11 @@
 #!/bin/python3
 
-from math import ceil,floor
+from math import ceil, floor
 import os
 import random
 import re
 import sys
+
 
 #
 # Complete the 'clique' function below.
@@ -16,19 +17,17 @@ import sys
 #
 
 def clique(n, m):
-    M=0
-    l=0
-    h=n
-    while l<=h:
-        i=ceil((l+h)/2)
-        if m>(0.5*(n**2 -(n%i)*ceil(n/i)**2-(i-(n%i))*floor(n/i)**2)):
-            M=i+1
-            l=i+1
+    M = 0
+    l = 0
+    h = n
+    while l <= h:
+        i = ceil((l + h) / 2)
+        if m > (0.5 * (n ** 2 - (n % i) * ceil(n / i) ** 2 - (i - (n % i)) * floor(n / i) ** 2)):
+            M = i + 1
+            l = i + 1
         else:
-            h=i-1
+            h = i - 1
     return M
-
-
 
 
 if __name__ == '__main__':

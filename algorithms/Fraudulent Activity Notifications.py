@@ -19,18 +19,18 @@ def median():
         return m
 
 
-def remove(l,r,x):
-    if l>r:
+def remove(l, r, x):
+    if l > r:
         return False
     else:
-        m=(l+r+1)//2
-        if arr[m]==x:
+        m = (l + r + 1) // 2
+        if arr[m] == x:
             del arr[m]
             return True
-        elif arr[m]<x:
-            return remove(m+1,r,x)
+        elif arr[m] < x:
+            return remove(m + 1, r, x)
         else:
-            return remove(l,m-1,x)
+            return remove(l, m - 1, x)
 
 
 def insert(l, r, x):
@@ -62,14 +62,12 @@ def activityNotifications(expenditure, d):
     for i in range(d, n):
         if 2 * median() <= expenditure[i]:
             c += 1
-        remove(0, len(arr),expenditure[i-d])
+        remove(0, len(arr), expenditure[i - d])
         insert(0, len(arr), expenditure[i])
     return c
 
 
 if __name__ == '__main__':
-
-
     nd = input().split()
 
     n = int(nd[0])
@@ -81,4 +79,3 @@ if __name__ == '__main__':
     result = activityNotifications(expenditure, d)
 
     print(result)
-

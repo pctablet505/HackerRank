@@ -6,13 +6,15 @@ import random
 import re
 import sys
 
+
 # Complete the getMinimumCost function below.
 def getMinimumCost(k, c):
     c.sort(reverse=True)
-    cost=0
+    cost = 0
     for i in range(len(c)):
-        cost+=c[i]*(1+i//k)
+        cost += c[i] * (1 + i // k)
     return cost
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

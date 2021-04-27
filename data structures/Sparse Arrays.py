@@ -6,13 +6,16 @@ import random
 import re
 import sys
 from collections import Counter
+
+
 # Complete the matchingStrings function below.
 def matchingStrings(strings, queries):
-    c=Counter(strings)
-    a=[]
+    c = Counter(strings)
+    a = []
     for q in queries:
         a.append(c[q])
     return a
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

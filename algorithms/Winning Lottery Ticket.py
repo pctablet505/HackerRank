@@ -6,27 +6,30 @@ import random
 import re
 import sys
 from collections import Counter
+
+
 def hashX(x):
-    i=0
-    s=set([y for y in x])
-    
-    binary=['0']*10
+    i = 0
+    s = set([y for y in x])
+
+    binary = ['0'] * 10
     for i in range(10):
         if str(i) in s:
-            binary[i]='1'
-    return int(''.join(binary),2)
+            binary[i] = '1'
+    return int(''.join(binary), 2)
+
 
 def winningLotteryTicket(tickets):
-    tickets=[hashX(x) for x in tickets]
-    c=[0]*1024
+    tickets = [hashX(x) for x in tickets]
+    c = [0] * 1024
     for x in tickets:
-        c[x]+=1
-    winners=0
+        c[x] += 1
+    winners = 0
     for i in range(1023):
-        for j in range(i,1024):
-            if i|j==(1<<10)-1:
-                winners+=c[i]*c[j]
-    winners+=c[-1]*(c[-1]-1)//2
+        for j in range(i, 1024):
+            if i | j == (1 << 10) - 1:
+                winners += c[i] * c[j]
+    winners += c[-1] * (c[-1] - 1) // 2
     return winners
 
 

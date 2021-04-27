@@ -6,8 +6,6 @@ import random
 import re
 import sys
 
-
-
 if __name__ == '__main__':
     t = int(input())
 
@@ -17,4 +15,4 @@ if __name__ == '__main__':
         n = int(nk[0])
 
         k = int(nk[1])
-        print(k-1 if ((k-1)|k)<=n else k-2)
+        print(k - 1 if ((k - 1) | k) <= n else k - 2)

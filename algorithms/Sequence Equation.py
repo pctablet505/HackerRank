@@ -6,13 +6,13 @@ import random
 import re
 import sys
 
+
 # Complete the permutationEquation function below.
 def permutationEquation(p):
-    y=[]
+    y = []
     for i in range(len(p)):
-        y.append(p.index(p.index(i+1)+1)+1)
+        y.append(p.index(p.index(i + 1) + 1) + 1)
     return y
-        
 
 
 if __name__ == '__main__':

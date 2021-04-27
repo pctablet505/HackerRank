@@ -3,14 +3,16 @@
 import os
 import sys
 
+
 #
 # Complete the handshake function below.
 #
 def handshake(n):
-    return int(n*(n-1)/2)
+    return int(n * (n - 1) / 2)
     #
     # Write your code here.
     #
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

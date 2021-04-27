@@ -6,13 +6,14 @@ import random
 import re
 import sys
 
+
 # Complete the gemstones function below.
 def gemstones(arr):
-    c=0
+    c = 0
     for x in 'abcdefghijklmnopqrstuvwxyz':
-        y=list(map(lambda y:x in y,arr))
+        y = list(map(lambda y: x in y, arr))
         if all(y):
-            c+=1
+            c += 1
 
     return c
 

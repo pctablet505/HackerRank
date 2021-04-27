@@ -3,32 +3,36 @@
 import os
 import sys
 from queue import deque
-def solve(arr,queries):
-    n=arr.__len__()
-    result=[]
+
+
+def solve(arr, queries):
+    n = arr.__len__()
+    result = []
     for d in queries:
-        M=0
-        k=0
+        M = 0
+        k = 0
         for r in range(d):
-            if arr[r]>M:
-                M=arr[r]
-                k=r        
-        m=M
-        s=1
-        e=d
-        while e<n:
-            if s-1==k or arr[e]>M:
-                M=arr[s]
-                k=s
-                for r in range(s+1,e+1):
-                    if arr[r]>M:
-                        M=arr[r]
-                        k=r
-                m=min(m,M)
-            s+=1
-            e+=1
+            if arr[r] > M:
+                M = arr[r]
+                k = r
+        m = M
+        s = 1
+        e = d
+        while e < n:
+            if s - 1 == k or arr[e] > M:
+                M = arr[s]
+                k = s
+                for r in range(s + 1, e + 1):
+                    if arr[r] > M:
+                        M = arr[r]
+                        k = r
+                m = min(m, M)
+            s += 1
+            e += 1
         result.append(m)
     return result
+
+
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 

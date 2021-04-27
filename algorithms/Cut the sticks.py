@@ -7,16 +7,17 @@ import re
 import sys
 import heapq
 
+
 def cutTheSticks(arr):
     heapq.heapify(arr)
-    res=[len(arr)]
+    res = [len(arr)]
     while arr:
-        smallest=heapq.heappop(arr)
-        while arr and arr[0]==smallest:
+        smallest = heapq.heappop(arr)
+        while arr and arr[0] == smallest:
             heapq.heappop(arr)
         res.append(len(arr))
         for i in range(len(arr)):
-            arr[i]-=smallest
+            arr[i] -= smallest
     res.pop()
     return res
 

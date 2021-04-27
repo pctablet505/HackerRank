@@ -6,14 +6,15 @@ import random
 import re
 import sys
 
+
 # Complete the utopianTree function below.
 def utopianTree(n):
-    h=1
-    for i in range(1,n+1):
-        if i%2==0:
-            h+=1
-        elif i%2==1:
-            h*=2
+    h = 1
+    for i in range(1, n + 1):
+        if i % 2 == 0:
+            h += 1
+        elif i % 2 == 1:
+            h *= 2
     return h
 
 

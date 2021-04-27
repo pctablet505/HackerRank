@@ -6,12 +6,13 @@ import random
 import re
 import sys
 
+
 # Complete the maximizingXor function below.
 def maximizingXor(l, r):
-    M=0
-    for i in range(l,r+1):
-        for j in range(i+1,r+1):
-            M=max(M,i^j)
+    M = 0
+    for i in range(l, r + 1):
+        for j in range(i + 1, r + 1):
+            M = max(M, i ^ j)
     return M
 
 

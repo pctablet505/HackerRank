@@ -6,16 +6,18 @@ import random
 import re
 import sys
 
+
 # Complete the beautifulDays function below.
-def isBeautiful(n,k):
-    n_rev=int(''.join(list(reversed(str(n)))))
-    return (n-n_rev)%k==0
+def isBeautiful(n, k):
+    n_rev = int(''.join(list(reversed(str(n)))))
+    return (n - n_rev) % k == 0
+
 
 def beautifulDays(i, j, k):
-    count=0
-    for x in range(i,j+1):
-        if isBeautiful(x,k):
-            count+=1
+    count = 0
+    for x in range(i, j + 1):
+        if isBeautiful(x, k):
+            count += 1
     return count
 
 

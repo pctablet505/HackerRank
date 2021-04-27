@@ -6,15 +6,16 @@ import random
 import re
 import sys
 
+
 # Complete the designerPdfViewer function below.
 def designerPdfViewer(h, word):
-    letters={}
+    letters = {}
     for i in range(26):
-        letters[chr(ord('a')+i)]=h[i]
-    w=[x for x in word]
-    w.sort(key=(lambda x:letters[x]))
-    return letters[w[-1]]*len(w)
-    
+        letters[chr(ord('a') + i)] = h[i]
+    w = [x for x in word]
+    w.sort(key=(lambda x: letters[x]))
+    return letters[w[-1]] * len(w)
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

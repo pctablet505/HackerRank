@@ -7,6 +7,8 @@ import re
 import sys
 
 from collections import defaultdict
+
+
 class Graph:
     def __init__(self, ):
         self.graph = defaultdict(list)
@@ -15,47 +17,47 @@ class Graph:
         self.graph[u].append(v)
         self.graph[v].append(u)
 
-
-
-    def DFSUtil(self,visited,vertex):
-        i=0
-        stack = []        
+    def DFSUtil(self, visited, vertex):
+        i = 0
+        stack = []
         visited.add(vertex)
         stack.append(vertex)
         while stack:
             v = stack.pop()
-            i+=1
+            i += 1
             for x in self.graph[v]:
                 if x not in visited:
                     stack.append(x)
                     visited.add(x)
         return i
+
     def DFS(self):
-        result=[]
-        visited=set()
+        result = []
+        visited = set()
         for x in self.graph:
             if x not in visited:
-                result.append(self.DFSUtil(visited,x))
+                result.append(self.DFSUtil(visited, x))
         return result
+
+
 def roadsAndLibraries(n, c_lib, c_road, cities):
-    g=Graph()
-    for i in range(1,n+1):
-        g.addEdge(i,i)
-    for u,v in cities:
-        g.addEdge(u,v)
-    counts=g.DFS()
+    g = Graph()
+    for i in range(1, n + 1):
+        g.addEdge(i, i)
+    for u, v in cities:
+        g.addEdge(u, v)
+    counts = g.DFS()
     print(counts)
-    amt=0
-    if c_lib<c_road:
-            amt=sum(counts)*c_lib
+    amt = 0
+    if c_lib < c_road:
+        amt = sum(counts) * c_lib
     else:
         for num in counts:
-            if num>1:
-                amt+=c_lib+(num-1)*c_road
+            if num > 1:
+                amt += c_lib + (num - 1) * c_road
             else:
-                amt+=c_lib
+                amt += c_lib
     return amt
-        
 
 
 if __name__ == '__main__':

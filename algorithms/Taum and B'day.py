@@ -6,6 +6,7 @@ import random
 import re
 import sys
 
+
 #
 # Complete the 'taumBday' function below.
 #
@@ -19,15 +20,16 @@ import sys
 #
 
 def taumBday(b, w, bc, wc, z):
-    less=min(bc,wc)
-    more=max(bc,wc)
-    if more<=less+z:
-        return b*bc +w*wc
-    if bc==less:
-        return b*bc+(less+z)*w
+    less = min(bc, wc)
+    more = max(bc, wc)
+    if more <= less + z:
+        return b * bc + w * wc
+    if bc == less:
+        return b * bc + (less + z) * w
     else:
-        return w*wc+(less+z)*b
+        return w * wc + (less + z) * b
     # Write your code here
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

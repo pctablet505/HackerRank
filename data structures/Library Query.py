@@ -9,7 +9,7 @@ Created on Mon Aug 31 12:53:34 2020
 class BinaryIndexedTree2D:
     '''1 based indexing'''
 
-    def __init__(self,max_x=10000):
+    def __init__(self, max_x=10000):
         self.x_max = 10000
         self.y_max = 1000
         self.tree = [[0 for i in range(self.y_max + 5)] for j in range(self.x_max + 5)]
@@ -55,8 +55,8 @@ for _ in range(int(input())):
     n = int(input())
     tree = BinaryIndexedTree2D(n)
 
-    no_books=[0] +list(map(int, input().split()))
-    for i in range(1, n+1):
+    no_books = [0] + list(map(int, input().split()))
+    for i in range(1, n + 1):
         tree.update(i, no_books[i], 1)
 
     q = int(input())
@@ -72,9 +72,7 @@ for _ in range(int(input())):
             tree.update(x, no_books[x], -1)
             no_books[x] = k
             tree.update(x, no_books[x], 1)
-    #for i in range(1,n+1):
-     #   tree.update(i,no_books[i],-1)
+    # for i in range(1,n+1):
+    #   tree.update(i,no_books[i],-1)
 
 print(s)
-
-

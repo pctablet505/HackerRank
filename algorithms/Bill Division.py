@@ -6,12 +6,14 @@ import random
 import re
 import sys
 
+
 # Complete the bonAppetit function below.
 def bonAppetit(bill, k, b):
-    if (sum(bill)-bill[k])/2==b:
+    if (sum(bill) - bill[k]) / 2 == b:
         print('Bon Appetit')
     else:
-        print(int(b-(sum(bill)-bill[k])/2))
+        print(int(b - (sum(bill) - bill[k]) / 2))
+
 
 if __name__ == '__main__':
     nk = input().rstrip().split()

@@ -6,26 +6,23 @@ import random
 import re
 import sys
 
+
 # Complete the libraryFine function below.
 def libraryFine(d1, m1, y1, d2, m2, y2):
-    if y2>=y1:
-        if y2>y1:
+    if y2 >= y1:
+        if y2 > y1:
             return 0
-        elif m2>=m1:
-            if m2>m1:
+        elif m2 >= m1:
+            if m2 > m1:
                 return 0
-            elif d2>=d1:
+            elif d2 >= d1:
                 return 0
             else:
-                return 15*(d1-d2)
+                return 15 * (d1 - d2)
         else:
-            return 500*(m1-m2)
+            return 500 * (m1 - m2)
     else:
         return 10000
-        
-
-
-
 
 
 if __name__ == '__main__':

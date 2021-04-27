@@ -6,20 +6,20 @@ import random
 import re
 import sys
 
+
 # Complete the twoStrings function below.
 def twoStrings(s1, s2):
-    letters=[x for x in 'abcdefghijklmnopqrstuvwxyz']
-    d1=dict().fromkeys(letters,0)
-    d2=dict().fromkeys(letters,0)
+    letters = [x for x in 'abcdefghijklmnopqrstuvwxyz']
+    d1 = dict().fromkeys(letters, 0)
+    d2 = dict().fromkeys(letters, 0)
     for x in s1:
-        d1[x]+=1
+        d1[x] += 1
     for x in s2:
-        d2[x]+=1
+        d2[x] += 1
     for x in letters:
         if d1[x] and d2[x]:
             return 'YES'
     return 'NO'
-
 
 
 if __name__ == '__main__':

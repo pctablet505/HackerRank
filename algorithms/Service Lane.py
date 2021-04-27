@@ -6,12 +6,14 @@ import random
 import re
 import sys
 
+
 # Complete the serviceLane function below.
-def serviceLane(n, cases,width):
-    res=[]
-    for i,j in cases:
-        res.append(min(width[i:j+1]))
+def serviceLane(n, cases, width):
+    res = []
+    for i, j in cases:
+        res.append(min(width[i:j + 1]))
     return res
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
@@ -29,7 +31,7 @@ if __name__ == '__main__':
     for _ in range(t):
         cases.append(list(map(int, input().rstrip().split())))
 
-    result = serviceLane(n, cases,width)
+    result = serviceLane(n, cases, width)
 
     fptr.write('\n'.join(map(str, result)))
     fptr.write('\n')

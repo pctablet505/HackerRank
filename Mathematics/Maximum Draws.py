@@ -3,14 +3,16 @@
 import os
 import sys
 
+
 #
 # Complete the maximumDraws function below.
 #
 def maximumDraws(n):
-    return n+1
+    return n + 1
     #
     # Write your code here.
     #
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

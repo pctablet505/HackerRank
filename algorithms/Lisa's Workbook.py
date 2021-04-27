@@ -6,26 +6,26 @@ import random
 import re
 import sys
 
+
 # Complete the workbook function below.
 
 def workbook(n, k, arr):
-    special=0
-    p=1
+    special = 0
+    p = 1
     for no_prob in arr:
-        no_pages=math.ceil(no_prob/k)
-        q=1
-        pi=p
-        for x in range(pi,pi+no_pages):
-            print(x,q,min(no_prob,q+k))
-            if x in range(q,min(no_prob+1,q+k)):
-                special+=1
-            if q+k<=no_prob:
-                q+=k
+        no_pages = math.ceil(no_prob / k)
+        q = 1
+        pi = p
+        for x in range(pi, pi + no_pages):
+            print(x, q, min(no_prob, q + k))
+            if x in range(q, min(no_prob + 1, q + k)):
+                special += 1
+            if q + k <= no_prob:
+                q += k
             else:
-                q=no_prob+1
-        p+=no_pages
+                q = no_prob + 1
+        p += no_pages
     return special
-
 
 
 if __name__ == '__main__':

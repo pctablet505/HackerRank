@@ -9,6 +9,8 @@ for t in range(int(sys.stdin.readline().strip())):
     max_a = []
     # Map a to weights
     max_a_to_w = {}
+
+
     # Log(n) for get_total, n for add_a_w, log(n) for both is possible with balanced trees
     def get_total(a):
         if not max_a:
@@ -17,12 +19,14 @@ for t in range(int(sys.stdin.readline().strip())):
             # Weight is abitrary for bisection, a is unique
             i = bisect.bisect(max_a, a)
             if i == 0 and a < max_a[i]:
-                    return 0
-            elif i+1 > len(max_a):
+                return 0
+            elif i + 1 > len(max_a):
                 return max_a_to_w[max_a[-1]]
-            else: 
-                return max_a_to_w[max_a[i-1]]
-    def add_a_w(a,w):
+            else:
+                return max_a_to_w[max_a[i - 1]]
+
+
+    def add_a_w(a, w):
         # Weight is abitrary for bisection, a is unique
         i = bisect.bisect_left(max_a, a)
         s = max_a[i:]
@@ -33,16 +37,18 @@ for t in range(int(sys.stdin.readline().strip())):
                 n += 1
             else:
                 break
-        del max_a[i:i+n]
-        max_a.insert(i,a)
-        max_a_to_w[a]=w
+        del max_a[i:i + n]
+        max_a.insert(i, a)
+        max_a_to_w[a] = w
+
+
     for i in range(len(a_list)):
         a = a_list[i]
         w = w_list[i]
         cur_weight = get_total(a)
-        prior_weight = get_total(a-1)
+        prior_weight = get_total(a - 1)
         take_weight = prior_weight + w
         if take_weight > cur_weight:
-            add_a_w(a,take_weight)
+            add_a_w(a, take_weight)
     result = get_total(float("inf"))
     print(result)

@@ -6,6 +6,7 @@ import random
 import re
 import sys
 
+
 #
 # Complete the 'maximumStones' function below.
 #
@@ -14,15 +15,16 @@ import sys
 #
 
 def maximumStones(arr):
-    i=0
-    odd=[]
-    even=[]
-    for i in range(1,len(arr),2):
+    i = 0
+    odd = []
+    even = []
+    for i in range(1, len(arr), 2):
         odd.append(arr[i])
-    for i in range(0,len(arr),2):
+    for i in range(0, len(arr), 2):
         even.append(arr[i])
-    return min(sum(odd),sum(even))*2
+    return min(sum(odd), sum(even)) * 2
     # Write your code here
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

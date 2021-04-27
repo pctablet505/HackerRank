@@ -1,2 +1,1 @@
-Regex_Pattern = r'\b[aeiouAEIOU][a-zA-Z]*\b'	# Do not delete 'r'.
-
+Regex_Pattern = r'\b[aeiouAEIOU][a-zA-Z]*\b'  # Do not delete 'r'.

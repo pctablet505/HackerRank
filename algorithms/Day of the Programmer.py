@@ -6,25 +6,21 @@ import random
 import re
 import sys
 
+
 # Complete the dayOfProgrammer function below.
 def dayOfProgrammer(year):
-    if year<1918:
-        if year%4==0:
+    if year < 1918:
+        if year % 4 == 0:
             return '12.09.{}'.format(year)
         else:
             return '13.09.{}'.format(year)
-    if year>1918:
-        if year%4==0 and (year%100!=0 or year%400==0):
+    if year > 1918:
+        if year % 4 == 0 and (year % 100 != 0 or year % 400 == 0):
             return '12.09.{}'.format(year)
         else:
             return '13.09.{}'.format(year)
     else:
         return '26.09.1918'
-
-    
-
-
-
 
 
 if __name__ == '__main__':

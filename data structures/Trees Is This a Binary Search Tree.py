@@ -5,13 +5,16 @@ class node:
         self.left = None
         self.right = None
 """
-def checkBST(root):    
-    inorder=[]
+
+
+def checkBST(root):
+    inorder = []
+
     def ino(root):
         if root:
             ino(root.left)
             inorder.append(root.data)
             ino(root.right)
+
     ino(root)
-    return inorder==sorted(set(inorder))
-        
+    return inorder == sorted(set(inorder))

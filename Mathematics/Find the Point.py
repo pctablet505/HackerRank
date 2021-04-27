@@ -3,21 +3,23 @@
 import os
 import sys
 
+
 #
 # Complete the findPoint function below.
 #
 def findPoint(xp, yp, xq, yq):
-    xr=2*xq-xp
-    yr=2*yq-yp
+    xr = 2 * xq - xp
+    yr = 2 * yq - yp
     '''
     if xq-xp!=0:
         m=(yq-yp)/(xq-xp)
         yr=int(yp+m*(xr-xp))
     '''
-    return (xr,yr)
+    return (xr, yr)
     #
     # Write your code here.
     #
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

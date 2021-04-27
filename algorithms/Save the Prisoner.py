@@ -6,10 +6,11 @@ import random
 import re
 import sys
 
+
 # Complete the saveThePrisoner function below.
 def saveThePrisoner(n, m, s):
-    res= (s-1+m)%(n)
-    if res==0:
+    res = (s - 1 + m) % (n)
+    if res == 0:
         return n
     else:
         return res

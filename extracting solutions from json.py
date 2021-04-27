@@ -12,10 +12,10 @@ i = 0
 failures = []
 languages = set()
 
-banned = ['\\', '/', '!', '*', '"', '<', '>', '?',':']
+banned = ['\\', '/', '!', '*', '"', '<', '>', '?', ':']
 
 for ind, sub in enumerate(data['submissions']):
-    if sub['score'] >2:
+    if sub['score'] > 2:
         contest = sub['contest']
         fname = sub['challenge']
         lang = sub['language']
@@ -32,39 +32,39 @@ for ind, sub in enumerate(data['submissions']):
         elif lang == 'c':
             ext = '.c'
 
-        elif lang == "cpp" or lang== 'cpp14':
+        elif lang == "cpp" or lang == 'cpp14':
             ext = '.cpp'
 
-        elif lang == "java" or lang== 'java8':
+        elif lang == "java" or lang == 'java8':
             ext = '.java'
 
         elif lang == 'javascript':
             ext = '.js'
 
         else:
-            ext = '.'+sub['language']
+            ext = '.' + sub['language']
 
-        path = 'hackerrank'+sep
+        path = 'hackerrank' + sep
 
         try:
             if lang in ['db2', 'mysql', 'oracle']:
-                path += 'SQL'+sep
-                
+                path += 'SQL' + sep
+
             elif lang == 'javascript':
-                path += 'JavaScript'+sep
+                path += 'JavaScript' + sep
             else:
-                path += contest+sep
+                path += contest + sep
 
             if not os.path.exists(path):
                 os.makedirs(path)
             if 'code' not in sub:
                 failures.append((fname, ind))
                 continue
-            
-            if os.path.exists(path+fname+ext):
+
+            if os.path.exists(path + fname + ext):
                 continue
 
-            with open(path+fname+ext, 'w') as f:
+            with open(path + fname + ext, 'w') as f:
                 f.write(sub['code'])
 
         except:
