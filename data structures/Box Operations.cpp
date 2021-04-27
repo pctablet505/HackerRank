@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
+
 using namespace std;
-#define forn(i,n) for (int i = 0; i < int(n); ++i)
+#define forn(i, n) for (int i = 0; i < int(n); ++i)
 typedef long long ll;
 typedef long long i64;
 typedef long double ld;
@@ -14,7 +15,6 @@ ll func(int p, int q) {
         return p / q;
     return -((-p + q - 1) / q);
 }
-
 
 
 struct Tree {
@@ -110,8 +110,7 @@ struct Tree {
     }
 
     void build(int n) {
-        forn (i, 2 * base)
-            add[i] = 0;
+        forn (i, 2 * base)add[i] = 0;
         for (int i = n + base; i < 2 * base; ++i)
             sum[i] = 0, vmin[i] = inf, vmax[i] = -inf;
         for (int i = base - 1; i > 0; --i)
@@ -120,7 +119,7 @@ struct Tree {
 } t;
 
 int main() {
-    
+
     //assert(freopen("goodinput/input01.txt", "r", stdin));
 
     int n, q;
@@ -134,11 +133,11 @@ int main() {
     forn (i, q) {
         int op, l, r, x;
         scanf("%d%d%d", &op, &l, &r);
-        
+
         r++;
         if (op == 1 || op == 2)
             scanf("%d", &x);
-        
+
         if (op == 1)
             t.put(l, r, x);
         else if (op == 2)
@@ -150,5 +149,5 @@ int main() {
         else
             assert(false);
     }
-    
+
 }

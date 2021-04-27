@@ -1,8 +1,8 @@
 
-template <typename T>
-void printArray(const vector<T> &arr){
-    for(T elem:arr){
-        cout<<elem<<endl;
+template<typename T>
+void printArray(const vector <T> &arr) {
+    for (T elem:arr) {
+        cout << elem << endl;
     }
 }
 
