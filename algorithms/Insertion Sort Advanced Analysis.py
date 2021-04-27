@@ -1,52 +1,26 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Sep 10 20:45:45 2020
+def inversions(arr):
+    n = len(arr)
+    if n==1:
+        return 0
+    n1 = n//2
+    n2 = n - n1
+    arr1 = arr[:n1]
+    arr2 = arr[n1:]
+    ans = inversions(arr1) + inversions(arr2)
+    i1 = 0
+    i2 = 0
+    for i in range(n):
+        if i1 <n1 and (i2>=n2 or arr1[i1]<=arr2[i2]):
+            arr[i] = arr1[i1]
+            ans += i2
+            i1 += 1 
+        elif i2 < n2:
+            arr[i] = arr2[i2]
+            i2 += 1
+    return ans
 
-@author: rahul
-"""
-'''This code is working in pypy3'''
-'''the complexity of this algorithm is n*log(max(arr)) and 
-I have tried red black trees with same time complexity n*log(n)
-all gave TLE in python3.
-The editorial solution is mergeSort method but that too has same complexity.
-
-'''
-
-
-def update(tree, max_ind, index, val):
-    while index <= max_ind:
-        tree[index] += val
-        index += index & (-index)
-
-
-def getSum(tree, index):
-    sum_ = 0
-    while index > 0:
-        sum_ += tree[index]
-        index -= index & (-index)
-    return sum_
-
-
-def getInvCount(arr, n):
-    res = 0
-    Max = max(arr)
-    BIT = tree = [0] * (Max + 1)
-    for i in range(n - 1, -1, -1):
-        res += getSum(tree, arr[i] - 1)
-        update(tree, Max, arr[i], 1)
-    return res
-
-
-def insertionSort(arr):
-    return getInvCount(arr, len(arr))
-
-
-t = int(input())
-s = ''
-
-for t_itr in range(t):
-    n = int(input())
-    arr = list(map(int, input().split()))
-    result = insertionSort(arr)
-    s += str(result) + '\n'
-print(s)
+for _ in range(int(input())):
+    n = input()
+    arr = list(map(int,input().split()))
+    counts = inversions(arr)
+    print(counts)
