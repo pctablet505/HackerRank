@@ -2,41 +2,44 @@
 
 import os
 import sys
+
+
 def sieveOfEratosthenes():
-    MAX=10000
-    primes=[]
-    IsPrime=[True]*MAX
-    for p in range(2,MAX):
+    MAX = 10000
+    primes = []
+    IsPrime = [True] * MAX
+    for p in range(2, MAX):
         if IsPrime[p]:
-            for i in range(p**2,MAX,p):
-                IsPrime[i]=False
-    for p in range(2,MAX):
+            for i in range(p ** 2, MAX, p):
+                IsPrime[i] = False
+    for p in range(2, MAX):
         if IsPrime[p]:
             primes.append(p)
     return primes
-primes=sieveOfEratosthenes()
+
+
+primes = sieveOfEratosthenes()
+
+
 def waiter(number, q):
     global primes
-    A=[[] for _ in range(q+1)]
-    A[0]=number
-    B=[[] for _ in range(q+1)]
-    for i in range(1,q+1):
-        while A[i-1]:
-            x=A[i-1].pop()
-            if x%primes[i-1]==0:
+    A = [[] for _ in range(q + 1)]
+    A[0] = number
+    B = [[] for _ in range(q + 1)]
+    for i in range(1, q + 1):
+        while A[i - 1]:
+            x = A[i - 1].pop()
+            if x % primes[i - 1] == 0:
                 B[i].append(x)
             else:
                 A[i].append(x)
-    res=[]
+    res = []
     for arr in B:
         while arr:
             res.append(arr.pop())
     while A[q]:
         res.append(A[q].pop())
     return res
-
-
-        
 
 
 if __name__ == '__main__':
@@ -47,7 +50,6 @@ if __name__ == '__main__':
     n = int(nq[0])
 
     q = int(nq[1])
-    
 
     number = list(map(int, input().rstrip().split()))
 

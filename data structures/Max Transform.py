@@ -5,8 +5,11 @@ import os
 import random
 import re
 import sys
+
 sys.setrecursionlimit(9999999)
 from decimal import Decimal
+
+
 def t1(n):
     return Decimal(n * (n + 1) / 2)
 
@@ -124,7 +127,7 @@ def maxpairs(a):
 def solve(A):
     n = len(A)
     x = max(range(n), key=lambda x: A[x])
-    return (int((brutesolo(A[:x]) + ends(A[x + 1:][::-1], maxpairs(A[:x])) + A[x] * countsplit(x, n))%(10**9+7)))
+    return (int((brutesolo(A[:x]) + ends(A[x + 1:][::-1], maxpairs(A[:x])) + A[x] * countsplit(x, n)) % (10 ** 9 + 7)))
 
 
 if __name__ == '__main__':

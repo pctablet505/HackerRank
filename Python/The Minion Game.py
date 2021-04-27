@@ -1,22 +1,21 @@
 def minion_game(string):
     # your code goes here
-    string=string.upper()
-    l=len(string)
-    vowels='AEIOU'
-        
-    Kevin=0
-    Stuart=0
+    string = string.upper()
+    l = len(string)
+    vowels = 'AEIOU'
+
+    Kevin = 0
+    Stuart = 0
 
     for i in range(l):
         if string[i] in vowels:
-            Kevin+=(l-i)
+            Kevin += (l - i)
         else:
-            Stuart+=(l-i) 
+            Stuart += (l - i)
 
     if Kevin > Stuart:
-        print('Kevin',Kevin)
+        print('Kevin', Kevin)
     elif Stuart > Kevin:
-        print('Stuart',Stuart)
+        print('Stuart', Stuart)
     else:
         print('Draw')
-

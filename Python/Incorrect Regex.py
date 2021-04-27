@@ -1,8 +1,9 @@
 import re
+
 for _ in range(int(input())):
-    r=True
+    r = True
     try:
         re.compile(input())
     except:
-        r=False
+        r = False
     print(r)

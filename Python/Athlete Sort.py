@@ -7,7 +7,6 @@ import re
 import sys
 from operator import itemgetter
 
-
 if __name__ == '__main__':
     nm = input().split()
 
@@ -21,7 +20,7 @@ if __name__ == '__main__':
         arr.append(list(map(int, input().rstrip().split())))
 
     k = int(input())
-    for i in sorted(arr,key=itemgetter(k)):
+    for i in sorted(arr, key=itemgetter(k)):
         for j in i:
-            print(j,end=' ')
+            print(j, end=' ')
         print()

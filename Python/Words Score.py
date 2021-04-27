@@ -1,6 +1,7 @@
 def is_vowel(letter):
     return letter in ['a', 'e', 'i', 'o', 'u', 'y']
 
+
 def score_words(words):
     score = 0
     for word in words:
@@ -11,6 +12,5 @@ def score_words(words):
         if num_vowels % 2 == 0:
             score += 2
         else:
-            score+=1
+            score += 1
     return score
-

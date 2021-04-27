@@ -1,5 +1,6 @@
 import heapq
 import os
+
 '''
 def heapifyDown(arr,i):
     largest=i
@@ -30,35 +31,37 @@ def pop(arr):
 '''
 
 
-def getBalance(x,y):
-    return len(x)-len(y)
+def getBalance(x, y):
+    return len(x) - len(y)
+
 
 def runningMedian(a):
-    maxH=[]
-    minH=[]    
-    result=[]
+    maxH = []
+    minH = []
+    result = []
     for x in a:
-        if not maxH or x<=maxH[0]:
+        if not maxH or x <= maxH[0]:
             maxH.append(x)
-            heapq._siftdown_max(maxH,0,len(maxH)-1)
+            heapq._siftdown_max(maxH, 0, len(maxH) - 1)
         else:
-            heapq.heappush(minH,x)
-            
-        if getBalance(maxH,minH)>1:
-            heapq.heappush(minH,heapq._heappop_max(maxH))
-        if getBalance(maxH,minH)<-1:
+            heapq.heappush(minH, x)
+
+        if getBalance(maxH, minH) > 1:
+            heapq.heappush(minH, heapq._heappop_max(maxH))
+        if getBalance(maxH, minH) < -1:
             maxH.append(heapq.heappop(minH))
-            heapq._siftdown_max(maxH,0,len(maxH)-1)
-        
-        if getBalance(minH,maxH)==0:
-            result.append((maxH[0]+minH[0])/2)
-        elif getBalance(minH,maxH)==1:
+            heapq._siftdown_max(maxH, 0, len(maxH) - 1)
+
+        if getBalance(minH, maxH) == 0:
+            result.append((maxH[0] + minH[0]) / 2)
+        elif getBalance(minH, maxH) == 1:
             result.append(minH[0])
-        elif getBalance(minH,maxH)==-1:
+        elif getBalance(minH, maxH) == -1:
             result.append(maxH[0])
-        
-    
+
     return result
+
+
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
