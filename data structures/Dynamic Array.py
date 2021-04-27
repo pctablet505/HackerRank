@@ -1,7 +1,10 @@
 #!/bin/python3
 
+import math
 import os
-
+import random
+import re
+import sys
 
 #
 # Complete the 'dynamicArray' function below.
@@ -13,20 +16,23 @@ import os
 #
 
 def dynamicArray(n, queries):
-    arr = [[] for _ in range(n)]
-    res = []
-    lastAnswer = 0
+    seqlist=[]
+    lastAnswer=0
+    result=[]
+    for i in range(n):
+        seqlist.append([])
+    for a,x,y in queries:
+        index=(x^lastAnswer)%n
+        
+        if a==1:            
+            seqlist[index].append(y)
+        if a==2:
+            size=len(seqlist[index])
+            lastAnswer=seqlist[index][y%size]
+            result.append(lastAnswer)
+    return result
 
-    for q, x, y in queries:
-        index = (x ^ lastAnswer) % n
-        if q == 1:
-            arr[index].append(y)
-        else:
-            size = len(arr[index])
-            lastAnswer = arr[index][y % size]
-            res.append(lastAnswer)
-    return res
-
+    
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')

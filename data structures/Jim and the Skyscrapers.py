@@ -4,30 +4,22 @@ import os
 import sys
 
 
-# Complete the solve function below.
+
 def solve(arr):
-    n = len(arr)
-    hhs = sorted(enumerate(arr), key=lambda t: (t[1], t[0]))
-    prev = list(range(-1, n - 1))
-    next = list(range(1, n + 1))
-    fi, fh = li, lh = hhs[0]
-    boloc_length = 1
-    s = 0
-    for i, h in hhs[1:]:
-        if h == lh and i == next[li]:
-            boloc_length += 1
-            li = i
+    stack=[]
+    count=0
+    for h in arr:
+        while stack and h>stack[-1][0]:
+            stack.pop()
+        if stack and h==stack[-1][0]:
+            count+=stack[-1][1]
+            stack[-1][1]+=1
         else:
-            s += boloc_length * (boloc_length - 1)
-            pi, ni = prev[fi], next[li]
-            if pi >= 0:
-                next[pi] = ni
-            if ni < n:
-                prev[ni] = pi
-            fi, fh = li, lh = i, h
-            boloc_length = 1
-    s += boloc_length * (boloc_length - 1)
-    return s
+            stack.append([h,1])
+    return 2*count
+
+
+
 
 
 if __name__ == '__main__':

@@ -1,0 +1,35 @@
+from collections import deque
+def knightlOnAChessboardUtil(n, i_s, j_s,i_g,j_g):
+    goal=(i_g,j_g)
+    visited=[[False for i in range(n)] for i in range(n)]
+    frontier = deque()
+    frontier.append((i_s,j_s,0,[]))
+    moves=[(-1,-2),(1,-2),(2,0),(1,2),(-1,2),(-2,0)]
+    actions=moves={(-1,-2):'UL',(1,-2):'UR',(2,0):'R',(1,2):'LR',(-1,2):'LL',(-2,0):'L'}
+    
+    
+    while frontier:
+        node = frontier.popleft()
+        x, y,count,path = node
+        
+        if (x,y)==goal:
+            
+            return count,path
+        
+        if not visited[x][y]:
+            visited[x][y]=True
+            for dx, dy in moves:
+                x1, y1 = x + dx, y + dy
+                if 0 <= x1 < n and 0 <= y1 < n:
+                    if visited[x1][y1]==False:
+                        frontier.append((x1, y1,count+1,path+[actions[dx,dy]]))
+    return None,['Impossible']
+n=int(input())
+i_s,j_s,i_g,j_g=map(int,input().split())
+cost,path=knightlOnAChessboardUtil(n,j_s,i_s,j_g,i_g)
+if cost is not None:
+    print(cost)
+    print(*path)
+
+else:
+    print('Impossible')

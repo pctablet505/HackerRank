@@ -1,0 +1,30 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the countSort function below.
+def countSort(arr):
+    for i in range(len(arr)//2):
+        arr[i][1]='-'
+    a=[[] for i in range(100)]
+    for pos,string in arr:
+        a[int(pos)].append(string)
+    res=[]
+    for x in a:
+        res.extend(x)
+    print(' '.join(res))
+    #return ' '.join(res)
+
+if __name__ == '__main__':
+    n = int(input().strip())
+
+    arr = []
+
+    for _ in range(n):
+        arr.append(input().rstrip().split())
+
+    countSort(arr)

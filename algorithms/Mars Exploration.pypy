@@ -1,0 +1,30 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the marsExploration function below.
+def marsExploration(s):
+    l=len(s)
+    n=int(l/3)
+    t='SOS'*n
+    count=0
+    for i in range(l):
+        if s[i]!=t[i]:
+            count+=1
+    return count
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = marsExploration(s)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()

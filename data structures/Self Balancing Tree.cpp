@@ -92,7 +92,7 @@ int maxVal(int a,int b)
 
 node* newAvlTreeNode(int data)
 {
-    // Allocate memory for new node
+    // Allocate memory for new node 
     node* treeNode = (node*)malloc(sizeof(node));
 
     // Assign data to this node

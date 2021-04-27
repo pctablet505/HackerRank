@@ -1,272 +1,115 @@
-from collections import defaultdict
-from collections import deque
-from math import ceil, log2
+#!/bin/python3
 
+import math
+import os
+import random
+import re
+import sys
+from collections import defaultdict,deque
 
-class Graph:
-    def __init__(self):
-        self.graph = defaultdict(list)
-        self.weights = dict()
-        self.subtree_weights = dict()
-        self.parents = defaultdict(list)
-        self.depth = defaultdict(int)
-        self.sums = defaultdict(list)
-        self.enter = defaultdict(int)
-        self.exit = defaultdict(int)
-
-    def addEdge(self, u, v):
-        self.graph[u].append(v)
-        self.graph[v].append(u)
-
-    def DFS(self, start=None):
-        stack = []
-        visited = set()
-        if not start:
-            current = next(iter(self.graph))
-        else:
-            current = start
-        visited.add(current)
-        stack.append(current)
-        while len(stack) > 0:
-            v = stack.pop()
-
-            print(v)
-            for x in self.graph[v]:
-                if x not in visited:
-                    stack.append(x)
-                    visited.add(x)
-
-    def getPath(self, start, end):
-        if start == end:
-            return [start]
-
-        def util(parent, end):
-
-            curr = end
-            path = [end]
-            while curr in parent:
-                path.append(parent[curr])
-                curr = parent[curr]
-            return path
-
-        visited = set()
-        q = deque()
-        q.appendleft(start)
-        visited.add(start)
-        parent = {}
-        while len(q):
-            v = q.pop()
-            for x in self.graph[v]:
-                if x not in visited:
-                    parent[x] = v
-                    q.appendleft(x)
-                    visited.add(x)
-                    if x == end:
-                        return util(parent, end)
-
-    def longestPahInTree(self):
-        start = next(iter(self.graph))
-
-        def util(self, start):
-            farthest = start
-            visited = set()
-            q = deque()
-            q.appendleft(start)
-            visited.add(start)
-            while len(q):
-                v = q.pop()
-
-                for x in self.graph[v]:
-                    if x not in visited:
-                        farthest = x
-                        q.appendleft(x)
-                        visited.add(x)
-            return farthest
-
-        d1 = util(self, start)
-        d2 = util(self, d1)
-        return d1, d2
-
-    def getTreeRoot(self):
-        start, end = self.longestPahInTree()
-        path = self.getPath(start, end)
-        root = path[len(path) // 2]
-        return root
-
-    def getTree(self):
-        self.root = self.getTreeRoot()
-
-        self.parent = dict()
-        self.parent[self.root] = None
-
-        def DFS(self):
-            stack = []
-            visited = set()
-            current = self.root
-            self.depth[current] = 1
-            visited.add(current)
-            stack.append(current)
-            while len(stack) > 0:
-                v = stack.pop()
-                for x in self.graph[v]:
-                    if x not in visited:
-                        stack.append(x)
-                        visited.add(x)
-                        self.parent[x] = v
-
-                        self.depth[x] = self.depth[v] + 1
-
-        DFS(self)
-        time = 0
-
-        def times(self, u, p):
-            nonlocal time
-            self.enter[u] = time
-            time += 1
-            for x in self.graph[u]:
-                if x != p and x != u:
-                    times(self, x, u)
-            self.exit[u] = time
-            time += 1
-
-        times(self, self.root, None)
-
-    def isAncestor(self, u, v):
-        return self.enter[u] <= self.enter[v] and self.exit[v] <= self.exit[u]
-
-    def getTreePath(self, u, v):
-        p1 = []
-        p2 = []
-        lca = self.LCA(u, v)
-        a = u
-        b = v
-        while a != lca:
-            p1.append(a)
-            if a == v:
-                return p1
-            a = self.parent[a]
-        p1.append(a)
-        while b != lca:
-
-            p2.append(b)
-            if b == u:
-                return p2
-            b = self.parent[b]
-
-        return p1 + p2[::-1]
-
-    def isLeaf(self, node):
-        if len(self.graph[node]) == 1:
-            return self.parent[node] == self.graph[node][0]
-        return False
-
-    def assignSubtreeWeights(self):
-
-        def util(self, u):
-
-            for x in self.graph[u]:
-
-                if x != u and x != self.parent[u]:
-                    self.subtree_weights[u] += util(self, x)
-            self.sums[self.subtree_weights[u]].append(u)
-            return self.subtree_weights[u]
-
-        util(self, self.root)
-        self.sorted_weighs = sorted(x for x in self.sums)
-
-    def lcaUtil(self):
-        n = len(self.graph)
-        self.level = ceil(log2(n)) + 1
-        for x in self.graph:
-            self.parents[x] = [None for i in range(self.level)]
-            self.parents[x][0] = self.parent[x]
-        for i in range(1, self.level):
-            for node in range(1, n + 1):
-                if self.parents[node][i - 1] != None:
-                    self.parents[node][i] = self.parents[self.parents[node][i - 1]][i - 1]
-
-    def LCA(self, u, v):
-        if self.depth[v] < self.depth[u]:
-            u, v = v, u
-        diff = self.depth[v] - self.depth[u]
-        for i in range(self.level):
-            if (diff >> i) & 1:
-                v = self.parents[v][i]
-        if u == v:
-            return u
-        for i in range(self.level - 1, -1, -1):
-            if self.parents[u][i] != self.parents[v][i]:
-                u = self.parents[u][i]
-                v = self.parents[v][i]
-        return self.parents[u][0]
-
-
-def solve(g, total):
-    ans = float('inf')
-
-    for i in g.graph:
-        si = g.subtree_weights[i]
-        if si < total / 3:
-            if (total - si) % 2 == 0:
-                t = (total - si) // 2
-                if t in g.sums:
-                    arr = g.sums[t]
-                    for x in arr:
-                        if g.isAncestor(x, i):
-                            continue
-                        else:
-                            ans = min(ans, t - si)
-                            break
-                else:
-                    j = g.parent[i]
-                    while j:
-                        cs = g.subtree_weights[j] - si
-                        if cs == t:
-                            ans = min(ans, t - si)
-                            break
-                        j = g.parent[j]
-        elif total / 3 <= si <= total / 2:
-            t = si
-            if si == total / 2 and total % 2 == 0:
-                ans = min(ans, total // 2)
-            if t in g.sums and len(g.sums[t]) > 1:
-                arr = g.sums[t]
-                for x in arr:
-                    if not g.isAncestor(x, i):
-                        ans = min(ans, 3 * si - total)
-                        break
-            else:
-                cw = 3 * si - total
-                j = i
-                while j and g.parent[j]:
-                    if g.subtree_weights[g.parent[j]] - g.subtree_weights[j] == si:
-                        ans = min(ans, cw)
-                        break
-                    j = g.parent[j]
-
-    if ans == float('inf'):
+# Complete the balancedForest function below.
+def balancedForest(c,edges):
+    if edges==[]:
         return -1
-    return ans
 
+    #build a graph
+    n=len(c)+1
+    graph=defaultdict(list)
+    root_max=0
+    root_node=None
+    for n1,n2 in edges:
+        graph[n1].append(n2)
+        if len(graph[n1])>root_max:
+            root_max=len(graph[n1])
+            root_node=n1
+        graph[n2].append(n1)
+        if len(graph[n2])>root_max:
+            root_max=len(graph[n2])
+            root_node=n2
 
-q = int(input().strip())
-for _ in range(q):
-    g = Graph()
-    n = int(input().strip())
-    weights = list(map(int, input().strip().split()))
-    if n == 1:
-        print(-1)
-        continue
+    #BFS costs for root_node !!!!deque is mandatory for performance
+    parent=[None]*n
+    visited=[None]*n
+    visited[root_node]=0
+    S=deque([root_node])
+    while len(S)>0:
+        cur=S.popleft()
+        visited_cur=visited[cur]
+        for node in graph[cur]:
+            if visited[node]!=None:
+                continue
+            S.append(node)
+            visited[node]=visited_cur+1
+            parent[node]=cur
 
-    for i in range(n - 1):
-        u, v = map(int, input().strip().split())
-        g.addEdge(u, v)
-    g.getTree()
-    total = sum(weights)
-    for i in range(1, n + 1):
-        g.subtree_weights[i] = weights[i - 1]
-        g.weights[i] = weights[i - 1]
-    g.assignSubtreeWeights()
+    #build a tree
+    sums=[None]
+    sums.extend(c)
+    for node,level in sorted([(i,visited[i]) for i in range(n) if visited[i]!=None],key=lambda x:x[1],reverse=True):
+        if parent[node]!=None:
+            sums[parent[node]]+=sums[node]
 
-    g.lcaUtil()
-    print(solve(g, total))
+    #calculate constraints
+    root_sum=sums[root_node] #R=root_sum=X+X+Y, X-big subtree, Y-small subtree
+    lim1=math.ceil(root_sum/3)
+    lim2=root_sum//2
+
+    ##brute force: First Node with lim1<=X<=lim2
+    S1=[i for i in range(n) if i!=root_node and sums[i]!=None and lim1<=sums[i]<=lim2]
+
+    ##brute force: Second Node vals: X=R/2, X & R-2X dif subtree, 2X & R-X same subtree
+    res=[]
+    min_add_val=None
+    for s1 in S1:
+        val1=sums[s1]
+        ### case X=R/2 exactly. Next, add same node with val1
+        if root_sum==val1*2:
+            if min_add_val==None or min_add_val>val1:
+                min_add_val=val1
+            continue
+
+        ### case Split tree for 3 parts
+        for i in range(n):
+            if i not in (root_node,s1) and sums[i]!=None and sums[i] in (root_sum-val1*2,val1,val1*2,root_sum-val1):
+                if min_add_val==None or min_add_val>3*val1-root_sum:
+                    min_add_val=3*val1-root_sum
+                break
+
+    ##brute force: Third Node with lim1<= R-X <=lim2
+    S3=[i for i in range(n) if i!=root_node and sums[i]!=None and lim1<=root_sum-sums[i]<=lim2]
+
+    ##brute force: Forth Node vals: R-2X
+    for s3 in S3:
+        val1=sums[s3]
+        S4=[i for i in range(n) if i not in (root_node,s3) and sums[i]!=None and sums[i]==val1*2-root_sum]
+        for s4 in S4:
+            cur=parent[s4]
+            while cur!=None and cur!=s3:
+                cur=parent[cur]
+            val2=sums[s4]
+            if cur==s3 and val2==2*val1-root_sum :
+                if min_add_val==None or min_add_val>val1-val2*2:
+                    min_add_val=val1-val2*2
+
+    return -1 if min_add_val==None else min_add_val
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    q = int(input())
+
+    for q_itr in range(q):
+        n = int(input())
+
+        c = list(map(int, input().rstrip().split()))
+
+        edges = []
+
+        for _ in range(n - 1):
+            edges.append(list(map(int, input().rstrip().split())))
+
+        result = balancedForest(c, edges)
+
+        fptr.write(str(result) + '\n')
+
+    fptr.close()

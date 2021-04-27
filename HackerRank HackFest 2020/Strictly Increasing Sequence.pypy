@@ -1,0 +1,69 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'whoIsTheWinner' function below.
+#
+# The function is expected to return a STRING.
+# The function accepts INTEGER_ARRAY arr as parameter.
+#
+
+def whoIsTheWinner(arr):
+    from collections import Counter
+    c=Counter(arr)
+    items=[]
+    singles=0
+    for x in c:
+        if c[x]>1:
+            items.append(c[x])
+        else:
+            singles+=1
+    s=0
+    items.sort(reverse=True)
+    def play(p):
+        nonlocal singles,items
+     #   print(p,singles,items)
+        if not items:
+            return True
+        if len(items)>=1 and singles:
+            singles-=1
+        else:
+            items[-1]-=1
+            if items[-1]==1:
+                singles+=1
+                items.pop()
+        
+    #print(items,singles)
+    if not items:
+        return 'First'
+    while items:
+        #print(singles,items)
+        if play('p1'):
+            return 'First' 
+        #print(singles,items)
+        if play('p2'):
+            return 'Second'
+        #print(singles,items)
+    if not items:
+        return "First"
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    t = int(input().strip())
+
+    for t_itr in range(t):
+        n = int(input().strip())
+
+        arr = list(map(int, input().rstrip().split()))
+
+        result = whoIsTheWinner(arr)
+
+        fptr.write(result + '\n')
+
+    fptr.close()
